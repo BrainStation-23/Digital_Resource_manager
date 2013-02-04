@@ -1,0 +1,33 @@
+﻿<div id="userEditModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Edit User</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+
+        <form name="frmEditUser" id="userEditForm">
+            <label>Login Id</label>
+            <!--<span class="input-large uneditable-input" name="Username" id="Username">{Username}</span>-->
+            <input type="text" readonly="true" placeholder="Username" name="Username" id="Username" value="{Username}">&nbsp;<span class="requiredmarker"></span>
+            
+            <label>Password</label>
+            <input id="txtUserPassword" type="password" name="password" class="input-small" placeholder="Password">&nbsp;<span class="requiredmarker"></span>
+            <!--<label>Confirm Password</label>
+            <input id="txtConfirmPassword" type="password" class="input-small" placeholder="Confirm Password">-->
+            <label>Email</label>
+            <input type="text" placeholder="Enter email" name="email" id="txtemail" value="{email}">&nbsp;<span class="requiredmarker"></span>
+            <label id="lblEditEmailError" style="color:red;"> </label>
+            <div class="controls">
+                <label>Role</label>
+                <select name="Role" id="userRole">
+                    <option value="">Select Role</option>
+                    {#roles}
+                    <option value="{RoleName}">{RoleName}</option>
+                    {/roles}
+                </select>
+            </div>
+            <button id="btnUserUpdate" data-Id="{Username}" type="button" class="btn">Submit</button>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,89 @@
+﻿<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">{Title}</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+       <form class="form-horizontal" id="modaldetails">  
+<!--                    <div class="control-group">
+                        <label class="control-label" for="inputTitle">Title</label>
+                        <div class="controls">
+                            <label id="inputTitle">{Title}</label>
+                        </div>
+                    </div>-->
+                    <div class="control-group pagination-centered">
+                        <!--<label class="control-label" for="Thumbimg">Thumb:</label>-->
+                       
+                            <img style="height:300px;" src="{imgPath}" id="Thumbimg" class="img-polaroid">
+                        <label id="inputlblFileName">{FileName}<a id="fDownloadDetails" class="pull-right" data-id="{Id}" href="{Download}"><i class="icon-download-alt"></i></a></label>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputlblUserName">Uploaded by :</label>
+                        <div class="controls">
+                             <label  id="inputlblUserName">{UserName}</label>
+                        </div>
+                    </div>
+<!--                    <div class="control-group">
+                        <label class="control-label" for="inputDescription">Description</label>
+                        <div class="controls">
+                            <label  id="inputDescription">{Description}</label>
+                        </div>
+                    </div>
+                     <div class="control-group">
+                        <label class="control-label" for="inputRank">Rank</label>
+                        <div class="controls">
+                            <label  id="inputRank">{Rank}</label>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputCategory">Category</label>
+                        <div class="controls">
+                            <label id="inputCategory">{Category}</label>
+                        </div>
+                    </div>-->
+
+                    <div class="control-group">
+                        <label class="control-label">UserRating</label>
+                        <div class="controls">
+                        <span class="ratingArea">
+                           <input type="hidden" id="fileIdforRating" value="{Id}" />
+                           <input type="hidden" id="previousRating" value="{UserRating}" />
+                            <img src="../../../img/EmptyStar.png" alt="Star Rating"  align="middle" id="1" class="rating" />
+                            <img src="../../../img/EmptyStar.png"" alt="Star Rating" align="middle" id="2" class="rating" />
+                            <img src="../../../img/EmptyStar.png"" alt="Star Rating" align="middle" id="3" class="rating" />
+                            <img src="../../../img/EmptyStar.png"" alt="Star Rating" align="middle" id="4" class="rating" />
+                            <img src="../../../img/EmptyStar.png"" alt="Star Rating" align="middle" id="5" class="rating" />
+                        </span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" >Tags</label>
+                        <div class="controls">                         
+                            {#Tags}
+                                <span class="badge" style="white-space: normal;display:inline-block">{TagName}</span>
+                            {/Tags}                         
+                        </div>
+                       <!-- <div class="controls pull-right">
+                            <a class="searchResultItemEdit" data-id="{Id}" href="#"><i class="icon-edit"></i></a>
+                            <a id="A3" class="resourceItemDelete" data-id="{Id}" href="#"><i class="icon-trash"></i></a>
+                        </div>-->
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" >Total Downloads</label>
+                        <div class="controls">                         
+                              <span id="totalDownload" style="white-space: normal;display:inline-block">{TotalDownload}</span>
+                        </div>
+                         <div class="controls pull-right">
+                            <a class="searchResultItemEdit" data-id="{Id}" href="#"><i class="icon-edit"></i></a>
+                            <a id="A3" class="resourceItemDelete" data-id="{Id}" href="#"><i class="icon-trash"></i></a>
+                        </div>
+                    </div>
+   
+        </form>
+
+    </div>
+<!--    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>-->
+</div>

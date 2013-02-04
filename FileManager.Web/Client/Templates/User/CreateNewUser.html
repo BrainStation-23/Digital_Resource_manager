@@ -1,0 +1,36 @@
+﻿<div id="userCreateModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="userCreateModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">New User</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+
+        <form name="frmCreateNewUser" id="createNewUser">
+            <label>Login Id</label>
+            <input type="text" placeholder="Login Id" name="Title" id="loginId">&nbsp;<span class="requiredmarker"></span>
+            <label id="lblloginIdError" style="color:red;"> </label>
+            <label>Password</label>
+            <input id="txtUserPassword" type="password" class="input-small" placeholder="Password">&nbsp;<span class="requiredmarker"></span>
+            <label id="lblPasswordError" style="color:red;"> </label>
+            <label>Confirm Password</label>
+            <input id="txtConfirmPassword" type="password" class="input-small" placeholder="Confirm Password">&nbsp;<span class="requiredmarker"></span>
+            <label id="lblConfirmPasswordError" style="color:red;"> </label>
+            <label>Email</label>
+            <input type="text" placeholder="Enter email" name="email" id="txtemail">&nbsp;<span class="requiredmarker"></span>
+            <label id="lblEmailError" style="color:red;"> </label>
+            <div class="controls">
+                <label>Role</label>
+                <select name="Role" id="userRole">
+                    <option value="">Select Role</option>
+                    {#roles}
+                    <option value="{RoleName}">{RoleName}</option>
+                    {/roles}
+                </select>
+            </div>
+            <label id="lblRoleError" style="color:red;"> </label>
+            <button id="btnCreateUser" type="button" class="btn">Submit</button>
+
+        </form>
+
+    </div>
+</div>

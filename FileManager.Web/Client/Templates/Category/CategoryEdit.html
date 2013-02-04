@@ -1,0 +1,30 @@
+﻿<div id="categoryEditModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">{Title}</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+        <form name="categoryEditForm" class="form-horizontal" id="categoryEditForm">
+             <input type="hidden" value="{Id}" name="Id" id="Id">
+            <div class="control-group">
+                <label for="Title" class="control-label">Title</label>
+                <div class="controls">
+                    <input type="text" value="{Title}" name="Title" id="Title">&nbsp;<span class="requiredmarker"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="allCategories">Parent Category</label>
+                <div class="controls">
+                    <select name="CategoryId" id="allCategories">
+                        <option value="">Select Category</option>
+                        {#categories}
+                            <option value="{Id}">{Title}</option>
+                        {/categories}
+                    </select>
+                </div>
+            </div>
+            <input id="btnCategoryUpdate" data-Id="{Id}"  type="button" class="btn pull-left" value="Update" />
+        </form>
+
+    </div>
+</div>

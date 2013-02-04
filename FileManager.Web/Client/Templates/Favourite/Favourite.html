@@ -1,0 +1,9 @@
+﻿{#favourites}
+<div style="border:5px solid white; position:relative" class="pull-left imageItemdiv">
+<img class="downdrag img-polaroid" data-downloadurl="application/zip:{ResourceZipName}:{root}{Download}" draggable="true"  style="height:150px;width:150px;" data-id="{Id}" src="{imgPath}" >
+    <div style="position:absolute;top:130px;right:15px;display:none;" class="fileLoaderdiv"> <a href="{Download}" id="fDownload" data-id="{Id}"><i class="icon-download-alt icon-white"></i></a></div>
+    
+<div style="position:absolute;top:20px;right:15px;display:none;" class="addFavouriteCart"> <a href="#" class="RemoveFavourite" data-id="{Id}" title="Remove From Favourite"><i class="icon-remove icon-white" data-id="{Id}"></i></a></div>
+    </div>
+{/favourites}
+<div style="clear:both;"></div>

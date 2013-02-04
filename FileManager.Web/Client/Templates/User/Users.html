@@ -1,0 +1,62 @@
+﻿<div class="span6">
+    <table class="table table-hover" id="tableUsers">
+        <thead>
+            <tr>
+                <td class="filter" colspan="8">
+                    <div class="pull-right">
+                        Search:
+                         <input id="userfilterBoxOne" value="" maxlength="30" size="30" type="text" class="input-medium search-query" />
+                        <i class="icon-remove" id="userfilterClearOne"></i> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><a href='#' title="Click Header to Sort">Username</a>
+                </th>
+                <th><a href='#' title="Click Header to Sort">Email</a>
+                </th>
+                <th><a href='#' title="Click Header to Sort">Role</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {#users}
+       <tr>
+           <td>{Username}
+           </td>
+           <td>{email}
+           </td>
+           <td>{role}
+           </td>
+           <td><a href="#"><i data-id="{Username}" class="icon-edit EditUser"></i></a>
+               <a id="#" href="#"><i data-id="{Username}" class="icon-trash deleteUser"></i></a>
+           </td>
+       </tr>
+            {/users}
+        </tbody>
+        <tfoot>
+            <tr id="userpagerOne">
+                <td colspan="8">
+                    <button class="btn  addUser"><i class="icon-plus-sign"></i>Add</button>                    
+                    <i class="first  icon-fast-backward"></i>
+                    <i class="prev icon-backward"></i>
+                    <input type="text" class="pagedisplay input-mini search-query" />
+                    <i class="next icon-forward"></i>
+                    <i class="last icon-fast-forward"></i>
+                    
+                    <select class="pagesize input-mini pull-right">
+                        <option selected="selected" value="10">10</option>
+
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                    
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div id="createUserContainer"></div>
+<div id="editUserContainer"></div>

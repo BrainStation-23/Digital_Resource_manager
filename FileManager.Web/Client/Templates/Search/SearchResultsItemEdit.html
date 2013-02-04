@@ -1,0 +1,71 @@
+﻿<div id="myModalEdit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">{Title}</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+
+        <form name="formItemEdit" class="form-horizontal" id="formFileUploaderEdit">
+            <input type="hidden" value="{Id}" name="Id" id="Id">
+            <div class="control-group">
+                <label for="Title" class="control-label">Title</label>
+                <div class="controls">
+                    <input type="text" value="{Title}" name="Title" id="Title">
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="Description" class="control-label">Description</label>
+                <div class="controls">
+                    <input type="text" value="{Description}" name="Description" id="Description">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="Rank" class="control-label">Rank</label>
+                <div class="controls">
+                    <input type="text" value="{Rank}" name="Rank" id="Rank">
+                    <label id="lblEditRkErr" style="color:red;"> </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="Tags" class="control-label">Tags</label>
+                <div class="controls">
+                    <input type="text" value="{#Tags}{TagName},{/Tags}" name="Tags" id="Tags" class="typeahead">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="allCategories">Category</label>
+                <div class="controls">
+                    <select name="CategoryId" id="allCategories">
+                        <option value="">Select Category</option>
+                        {#categories}
+                <option value="{Id}">{Title}</option>
+                        {/categories}
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="uploadingfile">Upload File : </label>
+                <div class="controls">
+                    <label id="inputlblFileName">{FileName}</label><input type="file" name="resource" id="uploadingfile" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="thumbfile">Thumb : </label>
+                <div class="controls">
+                    <div>
+                        <input type="file" name="thumb" id="thumbfile" />
+                    </div>
+                    <div>
+                        <img style="height: 80px;" src="{imgPath}" id="Thumbimg" class="img-polaroid">
+                    </div>
+                </div>
+            </div>
+            <input id="btnUpdate" data-id="{Id}" type="button" class="btn pull-left" value="Update" />
+
+        </form>
+
+    </div>
+</div>

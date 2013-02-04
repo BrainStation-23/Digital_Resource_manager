@@ -1,0 +1,45 @@
+﻿<form name="form1" id="formFileUploader">
+
+    <fieldset>
+        <legend>Create Resource</legend>
+        <label>Title <span class="requiredmarker"></span></label>
+        <input type="text" placeholder="Enter Title" name="Title" id="Title">
+        <label id="lblTitleError" style="color:red;"> </label>
+        <label>Description</label>
+        <input type="text" placeholder="Enter Description" name="Description" id="Description">
+        <label>Rank</label>
+        <input type="text" placeholder="Enter Rank" name="Rank" id="Rank">
+        <label id="lblRankError" style="color:red;"> </label>
+        <label>Tags</label>
+        <input type="text" placeholder="Enter Tags" name="Tags" id="Tags" class="typeahead">
+        <div class="controls">
+            <label>Category</label>
+            <select name="CategoryId" id="allCategories">
+                <option value="">Select Category</option>
+                {#categories}
+                    <option value="{Id}">{Title}</option>
+                {/categories}
+            </select>
+        </div>
+        <label>Upload File : <span class="requiredmarker"></span></label>
+        <input type="file" name="resource" id="uploadingfile" />
+        <label id="lbluploadingfile" style="color:red;"> </label>
+
+        <label>Thumb : <span class="requiredmarker"></span></label>
+        <input type="file" name="thumb" id="thumbfile" accept="image/*" />
+        <label id="lblthumbfile" style="color:red;"> </label>
+
+        <!--        <div class="fileupload fileupload-new" data-provides="fileupload">
+            <div class="input-append">
+                <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i><span class="fileupload-preview"></span></div>
+                <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" id="uploadingfile"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+            </div>
+        </div>-->
+        
+        <div style="padding-top:10px;">
+            <input id="btnSaveforPost" type="button" class="btn" value="Submit" />
+        </div>
+    </fieldset>
+
+</form>
+

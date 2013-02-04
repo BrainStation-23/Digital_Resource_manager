@@ -1,0 +1,57 @@
+﻿<div id="roleEditModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="roleEditModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="roleEditModalLabel">Edit User Role</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="editRoleName">Role</label>
+                <div class="controls">
+                    <input type="text" id="editRoleName" placeholder="Role" value="{RoleName}" disabled="disabled">&nbsp;<span class="requiredmarker"></span>
+                    <label  id="lblRoleNameEditErr" style="color:red;"></label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Set Permissions</label>
+                    <table id="tblEditRole" class="table table-hover" style="margin-left: 180px; width: 40%;">
+                        <thead>
+                            <th>Permission On
+                            </th>
+                            <th>Read
+                            </th>
+                            <th>Write
+                            </th>
+                            <th>Delete
+                            </th>
+                        </thead>
+                        <tbody>
+                            {#permissions}
+                   <tr>
+                       <td>{PermissionName}
+                       </td>
+                       <td>
+                           <input type="checkbox" id="{PermissionNameRead}" class="{ReadClass}">
+                       </td>
+                       <td>
+                           <input type="checkbox" id="{PermissionNameWrite}" class="{WriteClass}">
+                       </td>
+                       <td>
+                           <input type="checkbox" id="{PermissionNameDelete}" class="{DeleteClass}">
+                       </td>
+
+                   </tr>
+                            {/permissions}
+                        </tbody>
+                    </table>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button id="btnUpdateRole" type="button" class="btn">Update</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

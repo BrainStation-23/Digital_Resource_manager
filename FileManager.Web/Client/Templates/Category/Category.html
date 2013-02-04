@@ -1,0 +1,94 @@
+﻿<div id="categoryCreateModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Create Category</h3>
+    </div>
+    <div class="modal-body" style="max-height: 530px;">
+        <form id="frmCategoryCreate" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Title</label>
+                <div class="controls">
+                    <input name="Title" type="text" id="inputTitle" placeholder="Title">&nbsp;<span class="requiredmarker"></span>
+                    <label  id="lblCategoryTitleError" style="color:red;"></label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Category</label>
+                <div class="controls">
+                    <select name="CategoryId" id="CreateCategoryId">
+                        <option value="">Select Category</option>
+                        {#categories}
+                <option value="{Id}">{Title}</option>
+                        {/categories}
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button id="btnCatSave" type="button" class="btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="span4">
+    <table class="table table-hover" id="tableCategory">
+        <thead>
+            <tr>
+                <td class="filter" colspan="8">
+                    <div class="pull-right">
+                        Search:
+                         <input id="filterBoxOne" value="" maxlength="30" size="30" type="text" class="input-medium search-query" />
+                        <i class="icon-remove" id="filterClearOne"></i> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><a href='#' title="Click Header to Sort">Title</a>
+                </th>
+                <th><a href='#' title="Click Header to Sort">Parent Category</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {#categories}
+       <tr>
+           <td>{Title}
+           </td>
+           <td>{ParentCategory}
+           </td>
+           <td><a href="#"><i data-id="{Id}" class="icon-edit EditCategory"></i></a>
+               <a id="#" href="#"><i data-id="{Id}" class="icon-trash deleteCategory"></i></a>
+           </td>
+
+       </tr>
+            {/categories}
+        </tbody>
+        <tfoot>
+            <tr id="pagerOne">
+                <td colspan="8">
+                    <button class="btn  addCategory"><i class="icon-plus-sign"></i>Add</button>                    
+                    <i class="first  icon-fast-backward"></i>
+                    <i class="prev icon-backward"></i>
+                    <input type="text" class="pagedisplay input-mini search-query" />
+                    <i class="next icon-forward"></i>
+                    <i class="last icon-fast-forward"></i>
+                    
+                    <select class="pagesize input-mini pull-right">
+                        <option selected="selected" value="10">10</option>
+
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                    
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div id="categoryEdit">
+</div>
+

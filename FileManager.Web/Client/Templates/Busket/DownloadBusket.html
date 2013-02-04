@@ -1,0 +1,22 @@
+﻿<div>
+    <div style="margin-bottom:10px; margin-left:5px;">
+        <!--<button id="btnDownloadAll" type="button" class="btn">Download All</button>-->
+        <a href="#" id="downloadAll"> Download all
+            <i class="icon-download-alt icon-white"></i>
+        </a>
+    </div>
+    <div>
+        {#downloadBusket}
+        <div style="border: 5px solid white; position: relative" class="pull-left imageItemdownloaddiv">
+            <img class="downdrag img-polaroid" style="height: 150px; width: 150px;" data-id="{ResourceId}" src="{ResourceThumbPath}">
+
+            <div style="position: absolute; top: 20px; right: 15px; display: none;" class="removeDownloadBusket">
+                <a href="#" class="RemoveFromBasket" data-id="{ResourceId}" title="Remove From Basket">
+                    <i class="icon-remove icon-white" data-id="{ResourceId}"></i>
+                </a>
+            </div>
+        </div>
+        {/downloadBusket}
+    </div>
+    <div style="clear: both;"></div>
+</div>
