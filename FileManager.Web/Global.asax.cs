@@ -10,6 +10,7 @@ using FileManager.DAL;
 using System.Web.SessionState;
 using System.Web.Caching;
 using FileManager.BusinessFacade;
+using System.Threading;
 
 namespace FileManager.Web
 {
@@ -28,9 +29,11 @@ namespace FileManager.Web
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			System.Data.Entity.Database.SetInitializer(new FileManager.DAL.DataContext.FileManagerContextInitializer());
+
             if(new ScheduleTask().IsEnableDownloadClean())
-                AddTask("DeleteZipFile", new ScheduleTask().DowloadCleanInSecond());            
-            
+                AddTask("DeleteZipFile", new ScheduleTask().DowloadCleanInSecond());
+            if(new ScheduleTask().IsIntranet())
+                BackupTask("BackupResourceAndDb", new ScheduleTask().BackupIntervalSecond());           
 
 		}
 
@@ -56,10 +59,37 @@ namespace FileManager.Web
 
         public void CacheItemRemoved(string k, object v, CacheItemRemovedReason r)
         {
-
-            new ScheduleTask().CleanDowloadedFile();
+            Thread t = new Thread(new ThreadStart(new ScheduleTask().CleanDowloadedFile));
+            t.Start();         
+           
             AddTask(k, Convert.ToInt32(v));
         }
         private static CacheItemRemovedCallback OnCacheRemove = null;
+
+        private void BackupTask(string name, int seconds)
+        {
+            OnBackupCacheRemove = new CacheItemRemovedCallback(BackupCacheItemRemoved);
+            HttpRuntime.Cache.Insert(name, seconds, null,
+                DateTime.Now.AddSeconds(seconds), Cache.NoSlidingExpiration,
+                CacheItemPriority.NotRemovable, OnBackupCacheRemove);
+        }
+
+        public void BackupCacheItemRemoved(string k, object v, CacheItemRemovedReason r)
+        {
+            if (new ScheduleTask().IsEnableResourceBackup())
+            {
+                Thread t = new Thread(new ThreadStart(new ScheduleTask().ResouceBackup));
+                t.Start();
+            }
+            if (new ScheduleTask().IsEnableDbBackup())
+            {
+                Thread t = new Thread(new ThreadStart(new ScheduleTask().SqlDbBeckup));
+                t.Start();
+            }
+
+            BackupTask(k, Convert.ToInt32(v));
+        }
+        private static CacheItemRemovedCallback OnBackupCacheRemove = null;
+        
 	}
 }
