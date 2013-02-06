@@ -21,7 +21,7 @@ namespace FileManager.BusinessFacade
     public class ScheduleTask
     {
         Facade _facade = new Facade();
-
+        #region CleanDownloadBusket
         public void CleanDowloadedFile()
         {
             if (IsEnableDownloadClean())
@@ -89,6 +89,10 @@ namespace FileManager.BusinessFacade
             return false;
             
         }
+        #endregion
+
+        #region BackupTask
+
         public bool IsEnableResourceBackup()
         {
             var enableDownloadCleanString = ConfigurationManager.AppSettings.Get("EnableResourceBackup");
@@ -110,9 +114,9 @@ namespace FileManager.BusinessFacade
             }
             return false;
         }
-        public bool IsIntranet()
+        public bool IsEnableBackup()
         {
-            var enableDownloadCleanString = ConfigurationManager.AppSettings.Get("IsIntranet");
+            var enableDownloadCleanString = ConfigurationManager.AppSettings.Get("EnableBackup");
             if (!string.IsNullOrEmpty(enableDownloadCleanString))
             {
 
@@ -132,7 +136,7 @@ namespace FileManager.BusinessFacade
             return Int32.MaxValue;
         }
 
-        public void ResouceBackup()
+        public void ResouceBackup(string dateTime)
         {
             string destinationServer = ConfigurationManager.AppSettings.Get("RemoteResourceBeckupPC");
             string destinationfolder = ConfigurationManager.AppSettings.Get("ResouceBeckupFolderName");
@@ -140,20 +144,22 @@ namespace FileManager.BusinessFacade
             string password = ConfigurationManager.AppSettings.Get("RemoteResourceBeckupPCPassword");
 
             string destinationPath = destinationServer + destinationfolder;
-            if (IsEnableResourceBackup() && !String.IsNullOrEmpty(destinationServer) && !string.IsNullOrEmpty(destinationfolder) && !string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
-                BackupResource.CopyZip(@destinationServer, userName, password, @destinationPath);
+
+            if (IsEnableResourceBackup() && !String.IsNullOrEmpty(destinationServer) && !string.IsNullOrEmpty(destinationfolder))
+                BackupResource.CopyToRemoteLocation(@destinationServer, userName, password, @destinationPath,dateTime);
         }
 
-        public void SqlDbBeckup()
+        public void SqlDbBeckup(string dateTime)
         {
             string destinationServer = ConfigurationManager.AppSettings.Get("RemoteDbBeckupPC");
             string dbBackupFolder = ConfigurationManager.AppSettings.Get("DbBeckupFolderName");
             if(IsEnableDbBackup() && !String.IsNullOrEmpty(destinationServer) && !string.IsNullOrEmpty(dbBackupFolder))
-                BeckupRestoreDb.TakeBackup(destinationServer, dbBackupFolder);
+                BeckupRestoreDb.TakeBackup(destinationServer, dbBackupFolder,dateTime);
         }
-        
-    }
+        #endregion
 
+    }
+    #region HelperClass
     class BackupResource
     {
         //used in calling WNetAddConnection2[StructLayout (LayoutKind.Sequential)]
@@ -189,7 +195,7 @@ namespace FileManager.BusinessFacade
 
         private static extern int WNetCancelConnection2A(
             [MarshalAs(UnmanagedType.LPStr)]string lpName, int dwFlags, int fForce);
-        public static void CopyZip(string shareServer, string username, string password, string dirTo)
+        public static void CopyToRemoteLocation(string shareServer, string username, string password, string dirTo, string dateTime)
         {
             NETRESOURCE[] nr = new NETRESOURCE[1];
             nr[0].lpRemoteName = shareServer;
@@ -204,8 +210,8 @@ namespace FileManager.BusinessFacade
             try
             {
                 WNetAddConnection2A(nr, password, username, 0);
-                var folderToZip = Path.Combine(HttpRuntime.AppDomainAppPath, "Resources");
-                CopyFolder(folderToZip, dirTo + "\\Resource" + DateTime.Now.ToString("-yyyy-MM-dd-HH-mm-ss"));
+                var folderToCopy = Path.Combine(HttpRuntime.AppDomainAppPath, "Resources");
+                CopyFolder(folderToCopy, dirTo + "\\Resource" + dateTime);
             }
             catch (Exception ex)
             {
@@ -215,7 +221,6 @@ namespace FileManager.BusinessFacade
                 WNetCancelConnection2A(shareServer, 0, -1);
             }
         }
-
         public static void CopyFolder(string sourceFolder, string destFolder)
         {
             if (!Directory.Exists(destFolder))
@@ -238,7 +243,7 @@ namespace FileManager.BusinessFacade
     }
     class BeckupRestoreDb
     {
-        public static void TakeBackup(string destinationServer,string dbBackupFolder)
+        public static void TakeBackup(string destinationServer, string dbBackupFolder, string dateTime)
         {
             try
             {
@@ -254,7 +259,7 @@ namespace FileManager.BusinessFacade
                 Server svr = new Server(conn);
                 
                 Database BuildDB = svr.Databases[builder.InitialCatalog];
-                var beckupfolder = Path.Combine(dbBackupFolder, builder.InitialCatalog + DateTime.Now.ToString("-yyyy-MM-dd-HH-mm-ss") + ".bak");
+                var beckupfolder = Path.Combine(dbBackupFolder, builder.InitialCatalog + dateTime + ".bak");
                     
                 string dbbackupfile = @destinationServer +  beckupfolder;
 
@@ -313,4 +318,5 @@ namespace FileManager.BusinessFacade
         
         }*/
     }
+    #endregion
 }
