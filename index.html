@@ -202,67 +202,62 @@
 <li>
 <p>To Enable Download Clean change app setting  "EnableDownloadClean" key value to "true" also must be set related two keys.</p>
 
-<pre><code>
-      &lt;appSettings&gt;
-      &lt;add key="EnableDownloadClean" value="true" /&gt;
-      &lt;add key="DownloadCleanIntervalHours" value="2" /&gt;
-      &lt;add key="MaxDowloadMinute" value="60" /&gt;
-     &lt;/appSettings&gt;
+<pre><code>  &lt;appSettings&gt;
+  &lt;add key="EnableDownloadClean" value="true" /&gt;
+  &lt;add key="DownloadCleanIntervalHours" value="2" /&gt;
+  &lt;add key="MaxDowloadMinute" value="60" /&gt;
+ &lt;/appSettings&gt;
 </code></pre>
 </li>
-</ul><pre><code>
-#### Backup
+</ul><h4>Backup</h4>
 
-* Backup is now only intranet or local network.
-* To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.
+<ul>
+<li>Backup is now only intranet or local network.</li>
+<li>
+<p>To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.</p>
+
+<p></p>
+</li>
+</ul><h4>Database Backup</h4>
+
+<ul>
+<li>To Enable Databae Backup need to change to the EnableDbBackup key value to "true" also must be set related two keys from app setting.</li>
+<li>You must be set connectionstring with UserName and Password.</li>
+<li>
+<p>Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
+in your backup server.</p>
+
+<pre><code>&lt;connectionStrings&gt;
+&lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
+&lt;/connectionStrings&gt;
+
+ &lt;appSettings&gt;
+ &lt;add key="EnableDbBackup" value="true" /&gt;
+ &lt;add key="RemoteDbBeckupPC" value="\\BSNAS" /&gt;
+ &lt;add key="DbBeckupFolderName" value="\backup\Software1\temp" /&gt;
+ &lt;/appSettings&gt;
+</code></pre>
+</li>
+</ul><h4>Resource Backup</h4>
+
+<ul>
+<li>To Enable Backup need to change to the EnableResourceBackup key value to "true" also must be set related two keys from app setting.</li>
+<li>
+<p>If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
+RemoteResourceBeckupPCPassword key as Password.</p>
+
+<pre><code>&lt;appSettings&gt;
+&lt;add key="EnableResourceBackup" value="True" /&gt;
+&lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
+&lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
+
+       &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
+   &lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
 </code></pre>
 
-<pre><code>   &lt;appSettings&gt;
-        &lt;add key="EnableBackup" value="false" /&gt;
-    &lt;add key="BackupIntervalHours" value="12" /&gt;
-  &lt;/appSettings&gt;
-</code></pre>
-
-<pre><code>
-#### Database Backup
-
-* To Enable Databae Backup need to change to the EnableDbBackup key value to "true" also must be set related two keys from app setting.
-* You must be set connectionstring with UserName and Password.
-* Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
-    in your backup server.
-</code></pre>
-
-<pre><code>    &lt;connectionStrings&gt;
-    &lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
-    &lt;/connectionStrings&gt;
-
-
-     &lt;appSettings&gt;
-     &lt;add key="EnableDbBackup" value="true" /&gt;
-     &lt;add key="RemoteDbBeckupPC" value="\\BSNAS" /&gt;
-     &lt;add key="DbBeckupFolderName" value="\backup\Software1\temp" /&gt;
-     &lt;/appSettings&gt;
-</code></pre>
-
-<pre><code>
-#### Resource Backup
-
-* To Enable Backup need to change to the EnableResourceBackup key value to "true" also must be set related two keys from app setting.
-* If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
-    RemoteResourceBeckupPCPassword key as Password.
-</code></pre>
-
-<pre><code>    &lt;appSettings&gt;
-    &lt;add key="EnableResourceBackup" value="True" /&gt;
-    &lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
-    &lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
-
-           &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
-       &lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
-   &lt;/appSettings&gt;
-</code></pre>
-
-<pre><code></code></pre>
+<p></p>
+</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/BrainStation-23">BrainStation-23</a></p>
