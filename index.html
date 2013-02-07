@@ -107,28 +107,161 @@
 
 <p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/EditRole.png" alt="EditRole"></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h3>User Guide</h3>
+
+<h4>Login</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/login.png" alt="loginDetails">
+    * The defult UserName: <a href="mailto:admin@yourdomain.com">admin@yourdomain.com</a> and Password: 123456</p>
+
+<h4>Resource</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/createresourcedetails.png" alt="createResourceDetails">
+    * Proper Title, Description , Tag will help you to search a resource on demand of you.
+    * The Rank is treated as Uploader Rank. (User Rank will be available Resource Deatails Under Search menu.)
+    * If there have any previous tag in your perspective, the tag textbox will auto suggest you which are comma separeted.
+    * Resource thumbnail must be greater than 150 * 150 to see good look.</p>
+
+<h4>Search</h4>
+
+<h5>Search By Text</h5>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/searchbytext.png" alt="searchbytextDetails"></p>
+
+<pre><code>* You can search by Title, Description also with tag name.
+* Empty search text box will show all resource as result.
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/emptysearchresult.png" alt="emptysearchresultDetails"></p>
 
-<h3>Designer Templates</h3>
+<pre><code>* You can sort by User Rank and Download Count.
+* Add to Favourite by clicking the star icon (mention by 1).
+* Add to Dowload Basket by clicking the  plus sign icon(mention by 2).
+* Dowload by clicking the  download icon (mention by 3).
+* Click on thumb to see resource details.
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h5>Resource Deatils</h5>
 
-<h3>Rather Drive Stick?</h3>
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Search.png" alt="Search"> 
+    * User can see existing rate , also rate here by clicking star.
+    * Can edit and delete resource as per permission.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h4>Favourite</h4>
 
-<h3>Authors and Contributors</h3>
+<pre><code>* Can remove and download from favourite.(Screenshot given in quickshot.)
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h4>Dowload Basket</h4>
 
-<h3>Support or Contact</h3>
+<pre><code>* It's a favourite thing which give you bulk download functionality.(Screenshot given in quickshot.)
+</code></pre>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<h4>Category</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/editcategory.png" alt="editcategorydetails">
+    * You can edit category name and parent.
+    * Category delete have some terrible functionality which delete all resource under deleted category, rather than delete edit is much more flexible.</p>
+
+<h4>Role</h4>
+
+<pre><code>* Role Name is not editable, you can edit permisson.(Screenshot given in quickshot.)
+* Role Write is be treat as add, update permisson of perspective item.
+</code></pre>
+
+<h4>User</h4>
+
+<pre><code>* User email is required due to password recovery.(Screenshot given in quickshot.)
+* Admin can change user password from user page.
+* User role will be editable which will affect in real time.
+</code></pre>
+
+<h4>Download History</h4>
+
+<pre><code>* Download history show by resource and user base.
+* See download details by clicking details icon.
+</code></pre>
+
+<h3>Maintenance</h3>
+
+<h4>Application email setting</h4>
+
+<pre><code>* Add smtp mail setting from web config for forget password functionality.
+ &lt;!-- 
+     system.net&gt;
+        &lt;mailSettings&gt;
+          &lt;smtp from="bsfilemanager@gmail.com" deliveryMethod="Network"&gt;
+            &lt;network host="smtp.gmail.com" port="25" userName="bsfilemanager@gmail.com" password="" enableSsl="true" /&gt;
+          &lt;/smtp&gt;
+        &lt;/mailSettings&gt;
+    &lt;/system.net&gt;
+ --&gt;
+</code></pre>
+
+<h4>Clean download busket</h4>
+
+<pre><code>* To Enable Download Clean change app setting  "EnableDownloadClean" key value to "true" also must be set related two keys.
+
+ &lt;!-- 
+    &lt;appSettings&gt;
+         &lt;add key="EnableDownloadClean" value="true" /&gt;
+        &lt;add key="DownloadCleanIntervalHours" value="2" /&gt;
+        &lt;add key="MaxDowloadMinute" value="60" /&gt;
+     &lt;/appSettings&gt;
+ --&gt;
+</code></pre>
+
+<h4>Backup</h4>
+
+<pre><code>* Backup is now only intranet or local network.
+* To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.
+
+ &lt;!-- 
+    &lt;appSettings&gt;
+         &lt;add key="EnableBackup" value="false" /&gt;
+        &lt;add key="BackupIntervalHours" value="12" /&gt;
+     &lt;/appSettings&gt;
+ --&gt;
+</code></pre>
+
+<h4>Database Backup</h4>
+
+<pre><code>* To Enable Databae Backup need to change to the EnableDbBackup key value to "true" also must be set related two keys from app setting.
+* You must be set connectionstring with UserName and Password.
+* Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
+in your backup server.
+
+ &lt;!-- 
+   &lt;connectionStrings&gt;
+        &lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
+   &lt;/connectionStrings&gt;
+ --&gt;
+ &lt;!-- 
+    &lt;appSettings&gt;
+         &lt;add key="EnableDbBackup" value="true" /&gt;
+         &lt;add key="RemoteDbBeckupPC" value="\\BSNAS" /&gt;
+         &lt;add key="DbBeckupFolderName" value="\backup\Software1\temp" /&gt;
+     &lt;/appSettings&gt;
+ --&gt;
+</code></pre>
+
+<h4>Resource Backup</h4>
+
+<pre><code>* To Enable Backup need to change to the EnableResourceBackup key value to "true" also must be set related two keys from app setting.
+* If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
+RemoteResourceBeckupPCPassword key as Password.
+
+ &lt;!-- 
+    &lt;appSettings&gt;
+            &lt;add key="EnableResourceBackup" value="True" /&gt;
+            &lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
+            &lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
+
+            &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
+            &lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
+     &lt;/appSettings&gt;
+ --&gt;
+</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/BrainStation-23">BrainStation-23</a></p>
