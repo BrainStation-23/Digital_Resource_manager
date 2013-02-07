@@ -180,28 +180,24 @@
 <li><p>See download details by clicking details icon.</p></li>
 </ul><h3>Maintenance</h3>
 
-<h4>Application email setting</h4>
+<h4>Application smtp setting</h4>
 
-<pre><code>* Add smtp mail setting from web config for forget password functionality.
- &lt;!-- 
-     system.net&gt;
-        &lt;mailSettings&gt;
-          &lt;smtp from="bsfilemanager@gmail.com" deliveryMethod="Network"&gt;
-            &lt;network host="smtp.gmail.com" port="25" userName="bsfilemanager@gmail.com" password="" enableSsl="true" /&gt;
-          &lt;/smtp&gt;
-        &lt;/mailSettings&gt;
-    &lt;/system.net&gt;
- --&gt;
-</code></pre>
+<ul>
+<li>
+<p>Add smtp mail setting from web config for forget password functionality.</p>
 
-<h4>Clean download busket</h4>
+<p>&lt;!-- 
+     
+ --&gt;</p>
+</li>
+</ul><h4>Clean download busket</h4>
 
 <ul>
 <li>
 <p>To Enable Download Clean change app setting  "EnableDownloadClean" key value to "true" also must be set related two keys.</p>
 
 <p>&lt;!-- 
-    
+      
  --&gt;</p>
 </li>
 </ul><h4>Backup</h4>
@@ -212,7 +208,7 @@
 <p>To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.</p>
 
 <p>&lt;!-- 
-    
+   
  --&gt;</p>
 </li>
 </ul><h4>Database Backup</h4>
@@ -224,12 +220,16 @@
 <p>Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
 in your backup server.</p>
 
-<p>&lt;!-- 
-   
- --&gt;
- &lt;!-- 
-    
- --&gt;</p>
+<pre><code>&lt;!-- 
+&lt;connectionStrings&gt;
+&lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
+&lt;/connectionStrings&gt;
+</code></pre>
+
+<p>--&gt;
+    &lt;!-- 
+     
+    --&gt;</p>
 </li>
 </ul><h4>Resource Backup</h4>
 
@@ -239,11 +239,18 @@ in your backup server.</p>
 <p>If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
 RemoteResourceBeckupPCPassword key as Password.</p>
 
-<p>&lt;!-- 
-    
- --&gt;<br>
- &lt;!--           
- --&gt;</p>
+<pre><code>&lt;!-- 
+&lt;appSettings&gt;
+&lt;add key="EnableResourceBackup" value="True" /&gt;
+&lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
+&lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
+
+        &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
+&lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
+</code></pre>
+
+<p>
+    --&gt;</p>
 </li>
 </ul>
       </section>
