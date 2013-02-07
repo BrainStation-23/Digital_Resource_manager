@@ -28,7 +28,14 @@
         </ul>
       </header>
       <section>
-        <h3>Which tecnology used this application:</h3>
+        <h3>Purpose</h3>
+
+<ul>
+<li>This is  <strong>First version of Resource Management Application</strong> used for <strong>ASP.NET MVC4 webapi and Backbone integration purposes</strong>. </li>
+<li>This is a good code base of ASP.NET MVC4 webapi in restful architecture, since it covers many areas and development techniques.</li>
+<li>We are using it as a personal and official resource management tool for our resource management activity, you may use it as well for this or any other purpose (it is very <strong>easy to customize</strong> to fit your needs) </li>
+<li>The solution has been created with <strong>Visual Studio 2012</strong>.</li>
+</ul><h3>Technology</h3>
 
 <ul>
 <li>This application used <strong>ASP.NET MVC4 webapi from scratch.</strong> and uses these cool features  like:
@@ -53,8 +60,52 @@
 </li>
 <li>Every major development on this Resource Management app has been tagged (1.0)</li>
 <li>You can download each tag (starting with 1.0), check progress and move to the next when you understood everything that has been done.</li>
-<li>Follow the change log (tag history) and enjoy!</li>
-</ul><pre><code>$ cd your_repo_root/repo_name
+<li>Follow the change log (tag history) and enjoy!
+### Installing
+#### Altering connectionStrings section </li>
+</ul><p>Based on convention, EF will look for a connection string named as the DBContext (in this case "FileManagerDbContext") in webconfig and appconfig, and will use it, so feel free to set the data provider you want:</p>
+
+<pre><code> &lt;!-- 
+     By default (convention over configuration, the connection string with the same name as your DBContext will be used) 
+     You can select then wherever you will use SQL CE, SQL Serer Express Edition, etc, here. 
+ --&gt;
+ &lt;add name="FileManagerDbContext" connectionString="Data Source=|DataDirectory|ResourceManager.sdf" providerName="System.Data.SqlServerCe.4.0" /&gt;
+ &lt;!--
+ &lt;add name="FileManagerDbContext" connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=ResourceManager; Integrated Security=True; MultipleActiveResultSets=True" providerName="System.Data.SqlClient" /&gt;
+ --&gt;
+</code></pre>
+
+<h3>Quickshot</h3>
+
+<h4>Create Resource</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/addResource.png" alt="Create Resource"></p>
+
+<h4>Search</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Search.png" alt="Search"></p>
+
+<h4>Favourite</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Favourite.png" alt="Favourite"></p>
+
+<h4>Basket</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Basket.png" alt="Basket"></p>
+
+<h4>Category</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Category.png" alt="Category"></p>
+
+<h4>User</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/User.png" alt="User"></p>
+
+<h4>EditRole</h4>
+
+<p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/EditRole.png" alt="EditRole"></p>
+
+<pre><code>$ cd your_repo_root/repo_name
 $ git fetch origin
 $ git checkout gh-pages
 </code></pre>
