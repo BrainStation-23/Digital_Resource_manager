@@ -31,7 +31,7 @@ namespace FileManager.Web
 			System.Data.Entity.Database.SetInitializer(new FileManager.DAL.DataContext.FileManagerContextInitializer());
 
             AddTask("DeleteZipFile", new ScheduleTask().DowloadCleanInSecond());
-            BackupTask("BackupResourceAndDb", new ScheduleTask().BackupIntervalSecond());
+            BackupTask("BackupResourceAndDb", 20);//new ScheduleTask().BackupIntervalSecond());
 		}
 
         protected void Application_PostAuthorizeRequest()

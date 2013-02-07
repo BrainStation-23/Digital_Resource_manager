@@ -70,3 +70,6 @@ Based on convention, EF will look for a connection string named as the DBContext
 ![EditRole](https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/EditRole.png)
 
 
+## Develop By:
+
+* BrainStation-23
