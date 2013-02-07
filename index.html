@@ -119,10 +119,10 @@
 <p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/createresourcedetails.png" alt="createResourceDetails"></p>
 
 <ul>
-<li><p>Proper Title, Description , Tag will help you to search a resource on demand of you.</p></li>
-<li><p>The Rank is treated as Uploader Rank. (User Rank will be available Resource Deatails Under Search menu.)</p></li>
-<li><p>If there have any previous tag in your perspective, the tag textbox will auto suggest you which are comma separeted.</p></li>
-<li><p>Resource thumbnail must be greater than 150 * 150 to see good look.</p></li>
+<li>Proper Title, Description , Tag will help you to search a resource on demand of you.</li>
+<li>The Rank is treated as Uploader Rank. (User Rank will be available Resource Deatails Under Search menu.)</li>
+<li>If there have any previous tag in your perspective, the tag textbox will auto suggest you which are comma separeted.</li>
+<li>Resource thumbnail must be greater than 150 * 150 to see good look.</li>
 </ul><h4>Search</h4>
 
 <h5>Search By Text</h5>
@@ -135,18 +135,18 @@
 </ul><p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/emptysearchresult.png" alt="emptysearchresultDetails"></p>
 
 <ul>
-<li><p>You can sort by User Rank and Download Count.</p></li>
-<li><p>Add to Favourite by clicking the star icon (mention by 1).</p></li>
-<li><p>Add to Dowload Basket by clicking the  plus sign icon(mention by 2).</p></li>
-<li><p>Dowload by clicking the  download icon (mention by 3).</p></li>
-<li><p>Click on thumb to see resource details.</p></li>
+<li>You can sort by User Rank and Download Count.</li>
+<li>Add to Favourite by clicking the star icon (mention by 1).</li>
+<li>Add to Dowload Basket by clicking the  plus sign icon(mention by 2).</li>
+<li>Dowload by clicking the  download icon (mention by 3).</li>
+<li>Click on thumb to see resource details.</li>
 </ul><h5>Resource Deatils</h5>
 
 <p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Search.png" alt="Search"></p>
 
 <ul>
-<li><p>User can see existing rate , also rate here by clicking star.</p></li>
-<li><p>Can edit and delete resource as per permission.</p></li>
+<li>User can see existing rate , also rate here by clicking star.</li>
+<li>Can edit and delete resource as per permission.</li>
 </ul><h4>Favourite</h4>
 
 <ul>
@@ -160,25 +160,25 @@
 <p><img src="https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/editcategory.png" alt="editcategorydetails"></p>
 
 <ul>
-<li><p>You can edit category name and parent.</p></li>
-<li><p>Category delete have some terrible functionality which delete all resource under deleted category, rather than delete edit is much more flexible.</p></li>
+<li>You can edit category name and parent.</li>
+<li>Category delete have some terrible functionality which delete all resource under deleted category, rather than delete edit is much more flexible.</li>
 </ul><h4>Role</h4>
 
 <ul>
-<li><p>Role Name is not editable, you can edit permisson.(Screenshot given in quickshot.)</p></li>
-<li><p>Role Write is be treat as add, update permisson of perspective item.</p></li>
+<li>Role Name is not editable, you can edit permisson.(Screenshot given in quickshot.)</li>
+<li>Role Write is be treat as add, update permisson of perspective item.</li>
 </ul><h4>User</h4>
 
 <ul>
-<li><p>User email is required due to password recovery.(Screenshot given in quickshot.)</p></li>
-<li><p>Admin can change user password from user page.</p></li>
-<li><p>User role will be editable which will affect in real time.</p></li>
+<li>User email is required due to password recovery.(Screenshot given in quickshot.)</li>
+<li>Admin can change user password from user page.</li>
+<li>User role will be editable which will affect in real time.</li>
 </ul><h4>Download History</h4>
 
 <ul>
-<li><p>Download history show by resource and user base.</p></li>
-<li><p>See download details by clicking details icon.</p></li>
-</ul><h3>Maintenance</h3>
+<li>Download history show by resource and user base.</li>
+<li>See download details by clicking details icon.</li>
+</ul><h1>Maintenance</h1>
 
 <h4>Application smtp setting</h4>
 
@@ -186,9 +186,15 @@
 <li>
 <p>Add smtp mail setting from web config for forget password functionality.</p>
 
-<p>&lt;!-- 
-     
- --&gt;</p>
+<pre><code> &lt;system.net&gt;
+    &lt;mailSettings&gt;
+      &lt;smtp from="bsfilemanager@gmail.com" deliveryMethod="Network"&gt;
+            &lt;network host="smtp.gmail.com" port="25" userName="bsfilemanager@gmail.com" password="" enableSsl="true" /&gt;
+      &lt;/smtp&gt;
+    &lt;/mailSettings&gt;
+</code></pre>
+
+<p></p>
 </li>
 </ul><h4>Clean download busket</h4>
 
@@ -196,63 +202,67 @@
 <li>
 <p>To Enable Download Clean change app setting  "EnableDownloadClean" key value to "true" also must be set related two keys.</p>
 
-<p>&lt;!-- 
-      
- --&gt;</p>
+<pre><code>
+      &lt;appSettings&gt;
+      &lt;add key="EnableDownloadClean" value="true" /&gt;
+      &lt;add key="DownloadCleanIntervalHours" value="2" /&gt;
+      &lt;add key="MaxDowloadMinute" value="60" /&gt;
+     &lt;/appSettings&gt;
+</code></pre>
 </li>
-</ul><h4>Backup</h4>
+</ul><pre><code>
+#### Backup
 
-<ul>
-<li><p>Backup is now only intranet or local network.</p></li>
-<li>
-<p>To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.</p>
-
-<p>&lt;!-- 
-   
- --&gt;</p>
-</li>
-</ul><h4>Database Backup</h4>
-
-<ul>
-<li><p>To Enable Databae Backup need to change to the EnableDbBackup key value to "true" also must be set related two keys from app setting.</p></li>
-<li><p>You must be set connectionstring with UserName and Password.</p></li>
-<li>
-<p>Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
-in your backup server.</p>
-
-<pre><code>&lt;!-- 
-&lt;connectionStrings&gt;
-&lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
-&lt;/connectionStrings&gt;
+* Backup is now only intranet or local network.
+* To Enable Backup need to change to the EnableBackup key value to "true" and BackupIntervalHours key value in hour from app setting.
 </code></pre>
 
-<p>--&gt;
-    &lt;!-- 
-     
-    --&gt;</p>
-</li>
-</ul><h4>Resource Backup</h4>
-
-<ul>
-<li><p>To Enable Backup need to change to the EnableResourceBackup key value to "true" also must be set related two keys from app setting.</p></li>
-<li>
-<p>If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
-RemoteResourceBeckupPCPassword key as Password.</p>
-
-<pre><code>&lt;!-- 
-&lt;appSettings&gt;
-&lt;add key="EnableResourceBackup" value="True" /&gt;
-&lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
-&lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
-
-        &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
-&lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
+<pre><code>   &lt;appSettings&gt;
+        &lt;add key="EnableBackup" value="false" /&gt;
+    &lt;add key="BackupIntervalHours" value="12" /&gt;
+  &lt;/appSettings&gt;
 </code></pre>
 
-<p>
-    --&gt;</p>
-</li>
-</ul>
+<pre><code>
+#### Database Backup
+
+* To Enable Databae Backup need to change to the EnableDbBackup key value to "true" also must be set related two keys from app setting.
+* You must be set connectionstring with UserName and Password.
+* Database backup is now only local share folder in a domain which have read write permission for all. You need to add a schdule task to move backup file location
+    in your backup server.
+</code></pre>
+
+<pre><code>    &lt;connectionStrings&gt;
+    &lt;add name="FileManagerDbContext" connectionString="Data Source=.\sqlexpress;Initial Catalog=FileManager;Persist Security Info=True;User ID=admin;Password=000" providerName="System.Data.SqlClient" /&gt;
+    &lt;/connectionStrings&gt;
+
+
+     &lt;appSettings&gt;
+     &lt;add key="EnableDbBackup" value="true" /&gt;
+     &lt;add key="RemoteDbBeckupPC" value="\\BSNAS" /&gt;
+     &lt;add key="DbBeckupFolderName" value="\backup\Software1\temp" /&gt;
+     &lt;/appSettings&gt;
+</code></pre>
+
+<pre><code>
+#### Resource Backup
+
+* To Enable Backup need to change to the EnableResourceBackup key value to "true" also must be set related two keys from app setting.
+* If you need authencation for remote resource backup server you can add RemoteResourceBeckupPCUserName key as UserName and 
+    RemoteResourceBeckupPCPassword key as Password.
+</code></pre>
+
+<pre><code>    &lt;appSettings&gt;
+    &lt;add key="EnableResourceBackup" value="True" /&gt;
+    &lt;add key="RemoteResourceBeckupPC" value="\\BSNAS" /&gt;
+    &lt;add key="ResouceBeckupFolderName" value="\backup\Software1\temp" /&gt;
+
+           &lt;add key="RemoteResourceBeckupPCUserName" value="" /&gt;
+       &lt;add key="RemoteResourceBeckupPCPassword" value="" /&gt;
+   &lt;/appSettings&gt;
+</code></pre>
+
+<pre><code></code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/BrainStation-23">BrainStation-23</a></p>
