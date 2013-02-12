@@ -56,5 +56,6 @@ namespace FileManager.Web.ViewModel
 
         public string FavouriteIconClass { get; set; }
         public string FavouriteIconHelpTitle { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

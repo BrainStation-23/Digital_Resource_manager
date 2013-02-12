@@ -1,0 +1,17 @@
+﻿{#searchResults}
+<div style="border: 5px solid white; position: relative" class="pull-left imageItemdiv">
+    <img class="downdrags img-polaroid" data-downloadurl="application/zip:{ResourceZipName}:{root}{Download}" draggable="true" style="height: 150px; width: 150px;" data-id="{Id}" src="{imgPath}">
+    <div style="position: absolute; top: 130px; right: 15px; display: none;" class="fileLoaderdiv">
+        <a href="{Download}" id="fDownload" class="fDownload" data-id="{Id}"><i class="icon-download-alt"></i></a>
+    </div>
+    <div style="position: absolute; top: 130px; right: 130px; display: none;" class="addtodownload" data-id="{Id}">
+        <a href="#" id="A1" title="add to download basket" data-id="{Id}"><i class="icon-plus-sign" data-id="{Id}"></i></a>
+    </div>
+    
+    <div style="position: absolute; top: 20px; right: 15px; display: none;" class="addFavouriteCart">
+        <a href="#" class="addFavourite" data-id="{Id}" title="{FavouriteIconHelpTitle}"><i id="{Id}" class="{FavouriteIconClass}" data-id="{Id}"></i></a>
+    </div>
+
+</div>
+{/searchResults}
+<div style="clear: both;"></div>

@@ -106,11 +106,12 @@ namespace FileManager.Web.Controllers
         {
             if (permission.PermissionName == "Resource" && rolePermission.AllowWrite)
             {
-                userMenuList.Add(new UserMenu() { MenuOrder = 1, MenuId = "navResource", MenuName = "Resource" });
+                userMenuList.Add(new UserMenu() { MenuOrder = 0, MenuId = "navResource", MenuName = "Resource" });
             }
             if (permission.PermissionName == "Resource" && rolePermission.AllowRead)
             {
-                userMenuList.Add(new UserMenu() { MenuOrder = 2, MenuId = "navSearch", MenuName = "Search" });
+                userMenuList.Add(new UserMenu() { MenuOrder = 1, MenuId = "navSearch", MenuName = "Search" });
+                userMenuList.Add(new UserMenu() { MenuOrder = 2, MenuId = "navList", MenuName = "List" });
             }
             else if (permission.PermissionName == "CreateRole")
             {
@@ -135,6 +136,7 @@ namespace FileManager.Web.Controllers
             //userMenuList.Add(new UserMenu() { MenuId = "navHome", MenuName = "Home" });
             userMenuList.Add(new UserMenu() { MenuId = "navResource", MenuName = "Resource" });
             userMenuList.Add(new UserMenu() { MenuId = "navSearch", MenuName = "Search" });
+            userMenuList.Add(new UserMenu() { MenuId = "navList", MenuName = "List" });
             userMenuList.Add(new UserMenu() { MenuId = "navFavourites", MenuName = "Favourites" });
             userMenuList.Add(new UserMenu() { MenuId = "navDownloadBasket", MenuName = "Download Basket" });
             userMenuList.Add(new UserMenu() { MenuId = "navCategory", MenuName = "Category" });

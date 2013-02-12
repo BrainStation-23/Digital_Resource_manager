@@ -12,9 +12,10 @@ define([
   'views/User/PermissionView',
   'views/Favourite/FavouriteView',
   'views/History/DownloadHistoryView',
-  'views/Busket/DownloadBusketView'
+  'views/Busket/DownloadBusketView',
+  'views/GenericSearch/GenericSearchView'
   
-], function ($, _, Backbone, homeView, headerNavigationView, categoryListView, createResourceView, searchView, usersView, permissionView, favouriteView, downloadHistoryView, downloadBusketView) {
+], function ($, _, Backbone, homeView, headerNavigationView, categoryListView, createResourceView, searchView, usersView, permissionView, favouriteView, downloadHistoryView, downloadBusketView, genericSearchView) {
     var AppRouter = Backbone.Router.extend({
     routes: {
       // Define some URL routes
@@ -34,6 +35,8 @@ define([
       'create role': 'showCreateRoleURL',
       'Download History': 'showHistoryURL',
       'download history': 'showHistoryURL',
+      'List': 'showGenericSearch',
+      'list': 'showGenericSearch',
       // Default
       '*actions': 'defaultAction'
     },
@@ -94,7 +97,17 @@ define([
             }
         }, 'json');
     },
-    
+    showGenericSearch:function()
+    {
+        var self = this;
+        $.get('/api/user/?id=1', null, function (isLoggedIn) {
+            if (isLoggedIn) {
+                genericSearchView.render();
+                var currentTab = $('a[href="#Generic Search"]');
+                self.addActivClass(currentTab);
+            }
+        }, 'json');
+    },
     showUsersUrl: function () {
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {

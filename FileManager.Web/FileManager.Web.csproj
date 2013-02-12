@@ -154,6 +154,8 @@
     <Compile Include="ViewModel\SearchResultsItemDetailsViewModel.cs" />
     <Compile Include="ViewModel\SearchResultsPaginationViewModel.cs" />
     <Compile Include="ViewModel\SearchResultsViewModel.cs" />
+    <Compile Include="ViewModel\TagCloud.cs" />
+    <Compile Include="ViewModel\TagCloudItems.cs" />
     <Compile Include="ViewModel\TagsViewModel.cs" />
     <Compile Include="ViewModel\UserMenu.cs" />
   </ItemGroup>
@@ -166,6 +168,7 @@
     <Content Include="Client\Collections\Busket\DownloadBusketCollection.js" />
     <Content Include="Client\Collections\Category\CategoryCollection.js" />
     <Content Include="Client\Collections\Favourite\FavouriteCollection.js" />
+    <Content Include="Client\Collections\GenericSearch\GenericSearchCollection.js" />
     <Content Include="Client\Collections\History\HistoryCollection.js" />
     <Content Include="Client\Collections\HomeCollection.js" />
     <Content Include="Client\Collections\Navigation\HeaderNavigationCollection.js" />
@@ -174,6 +177,7 @@
     <Content Include="Client\Main.js" />
     <Content Include="Client\Models\Category\CategoryModel.js" />
     <Content Include="Client\Models\Favourite\FavouriteModel.js" />
+    <Content Include="Client\Models\GenericSearch\GenericSearchModel.js" />
     <Content Include="Client\Models\HomeModel.js" />
     <Content Include="Client\Models\ModelBase.js" />
     <Content Include="Client\Models\Navigation\HeaderNavigationModel.js" />
@@ -189,6 +193,8 @@
     <Content Include="Client\Templates\Favourite\Favourite.html" />
     <Content Include="Client\Templates\filecontainer.html" />
     <Content Include="Client\Home.html" />
+    <Content Include="Client\Templates\GenericSearch\GenericSearch.html" />
+    <Content Include="Client\Templates\GenericSearch\GenericSearchResults.html" />
     <Content Include="Client\Templates\History\DownloadHistory.html" />
     <Content Include="Client\Templates\History\HistoryDetail.html" />
     <Content Include="Client\Templates\Home\Alert.html" />
@@ -212,6 +218,8 @@
     <Content Include="Client\Views\Category\CategoryViewTest.js" />
     <Content Include="Client\Views\CreateResourceView.js" />
     <Content Include="Client\Views\Favourite\FavouriteView.js" />
+    <Content Include="Client\Views\GenericSearch\GenericSearchResultsView.js" />
+    <Content Include="Client\Views\GenericSearch\GenericSearchView.js" />
     <Content Include="Client\Views\History\DownloadDetailView.js" />
     <Content Include="Client\Views\History\DownloadHistoryView.js" />
     <Content Include="Client\Views\Home.js" />

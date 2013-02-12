@@ -50,5 +50,6 @@ namespace FileManager.Model
         public int DownloadCount { get; set; }
         public string ThumbName { get; set; }
         public Guid UserId { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

@@ -172,6 +172,7 @@ namespace FileManager.BusinessFacade
             resourceInfo.Description = !string.IsNullOrEmpty(provider.FormData.Get("Description")) ? string.Concat(provider.FormData.Get("Description")) : "";
             resourceInfo.CategoryId = !string.IsNullOrEmpty(provider.FormData.Get("CategoryId")) ? Convert.ToInt32(provider.FormData.Get("CategoryId")) : 0;
             resourceInfo.Rank = !string.IsNullOrEmpty(provider.FormData.Get("Rank")) ? string.Concat(provider.FormData.Get("Rank")) : "";
+            resourceInfo.CreateDate = DateTime.Now;
             string[] tags = provider.FormData.Get("Tags").Split(',');
             resourceInfo.Tags = new List<Tag>();
             foreach (var tag in tags)
@@ -259,6 +260,11 @@ namespace FileManager.BusinessFacade
         public IEnumerable<ResourceInfo> GetResourceByCategoryId(int id)
         {
             return _db.ResourceInfos.Where(r => r.CategoryId == id).AsEnumerable();
+        }
+        public IEnumerable<ResourceInfo> GetResourceByTagName(string tagName)
+        {
+            var tag = this.GetTagByTagName(tagName);
+            return _db.ResourceInfos.Where(r => r.Tags.Any(t => t.Id == tag.Id)).AsEnumerable();
         }
     }
 }

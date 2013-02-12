@@ -93,7 +93,8 @@ namespace FileManager.Web.Controllers
                     ResourceZipName = resourceZipName,
                     FavouriteIconClass = favouriteIconClass,
                     FavouriteIconHelpTitle = favouriteIconHelpTitle,
-                    DownloadCount = item.DownloadCount
+                    DownloadCount = item.DownloadCount,
+                    CreateDate = item.CreateDate.ToUniversalTime()
 				};
 				_searchResultsVM.Add(resultsVM);
 			}
@@ -249,6 +250,27 @@ namespace FileManager.Web.Controllers
 			return tags;
 
 		}
+        public List<TagCloud> GetTagCloud()
+        {
+            var tags = _facade.GetTags();
+            //var cloudtags = new TagCloudItems();
+            var tagClouds = new List<TagCloud>();
+
+            tags.ToList().ForEach(t => {
+                var noOfResource = t.ResourceInfos.Count;
+                tagClouds.Add(new TagCloud
+                {
+
+                        TagName = t.Name.ToLower(),
+                        NoOfResource = noOfResource
+    
+                });
+            });
+
+            tagClouds.Sort((x, y) => x.TagName.CompareTo(y.TagName));
+            return tagClouds;
+
+        }
         public SearchResultsItemDetailsViewModel GetSearchResultsDetailsViewModel(long itemDetailsId)
         {
             if (!IsAuthorize("read"))
@@ -297,7 +319,6 @@ namespace FileManager.Web.Controllers
                 
             return _searchResultsItemDetailsVM;
         }
-
         [ActionName("UpdateResource")]
         public async Task<HttpResponseMessage> PostUpdateResource()
         {
@@ -414,6 +435,28 @@ namespace FileManager.Web.Controllers
             }
         }
 
+        public SearchResultsPaginationViewModel GetSearchResultsByTag(string tagName, int pageNumber)
+        {
+            if (!IsAuthorize("read"))
+            {
+                return null;
+            }
+            var searchResultsPagination = new SearchResultsPaginationViewModel();
+            var data = this.GetSearchResultsViewModel(_facade.GetResourceByTagName(tagName).ToList());
+            if (data != null)
+            {
+                var totalData = data.Count();
+
+                double resultToDisplay = 18;
+                double pagecount = Math.Ceiling(totalData / resultToDisplay);
+                int totalPage = totalData > resultToDisplay ? Convert.ToInt32(pagecount) : 1;
+                int actualDisplay = totalData < resultToDisplay ? totalData : Convert.ToInt32(resultToDisplay);
+
+                searchResultsPagination.SearchResult = data.Skip(actualDisplay * pageNumber).Take(actualDisplay);
+                searchResultsPagination.TotalPage = totalPage;
+            }
+            return searchResultsPagination;
+        }
         private bool IsAuthorize(string permissonType)
         {
             return _fileManagerAuth.IsAuthorize("Resource", permissonType);
