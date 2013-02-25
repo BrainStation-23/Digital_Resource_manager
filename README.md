@@ -6,9 +6,9 @@ Digital Resource Manager
  * We are using it as a personal and official resource management tool for our resource management activity, you may use it as well for this or any other purpose (it is very **easy to customize** to fit your needs) 
  * The solution has been created with **Visual Studio 2012**.
  
-## Details Feature && documentation
+## Details Feature and documentation
 
-[Feature && documentation](http://brainstation-23.github.com/Digital_Resource_manager/)
+[Feature and documentation](http://brainstation-23.github.com/Digital_Resource_manager/)
 
 ## Which tecnology used this application:
 
@@ -21,7 +21,7 @@ Digital Resource Manager
    * **Requirejs** used it for AMD API for all JavaScript modules.
    * **Dust** templeting engine for better rendering experience.
    * **Twitter bootstrap** to see a awesome UI.
- * Every major development on this Resource Management app has been tagged (1.0)
+ * Every major development on this Resource Management app has been tagged (1.01)
  * You can download each tag (starting with 1.0), check progress and move to the next when you understood everything that has been done.
  * Follow the change log (tag history) and enjoy!
  
