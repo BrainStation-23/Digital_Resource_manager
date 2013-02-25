@@ -6,9 +6,9 @@ Digital Resource Manager
  * We are using it as a personal and official resource management tool for our resource management activity, you may use it as well for this or any other purpose (it is very **easy to customize** to fit your needs) 
  * The solution has been created with **Visual Studio 2012**.
  
-## Online Demo
+## Details Feature && documentation
 
-[Check the online demo here](http://www.brainstation-23.com)
+[Feature && documentation](http://brainstation-23.github.com/Digital_Resource_manager/)
 
 ## Which tecnology used this application:
 
@@ -49,6 +49,11 @@ Based on convention, EF will look for a connection string named as the DBContext
 
 ![Search](https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Search.png)
 
+### List(Cloud Tag)
+
+![List](https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/list.png)	
+
+
 ### Favourite
 
 ![Favourite](https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/Favourite.png)
@@ -70,6 +75,6 @@ Based on convention, EF will look for a connection string named as the DBContext
 ![EditRole](https://github.com/BrainStation-23/Digital_Resource_manager/raw/master/ResourceScreenshot/EditRole.png)
 
 
-## Develop By:
+## Developed By:
 
-* BrainStation-23
+* [BrainStation-23](http://www.brainstation-23.com)

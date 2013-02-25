@@ -103,7 +103,7 @@ define([
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
                 genericSearchView.render();
-                var currentTab = $('a[href="#Generic Search"]');
+                var currentTab = $('a[href="#List"]');
                 self.addActivClass(currentTab);
             }
         }, 'json');
