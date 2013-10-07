@@ -13,8 +13,8 @@ namespace FileManager.Web.Controllers
 	{
 
 		public ActionResult Index()
-		{			
-			return Redirect("~/Client/Home.html");
+		{
+            return View();
 		}
 	}
 }

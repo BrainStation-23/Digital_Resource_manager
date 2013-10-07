@@ -48,6 +48,7 @@ namespace FileManager.Web.Controllers
             {
                 unAuthorize = true;
             }
+            if (resourceInfos == null) return _searchResultsVM;
             Guid userId = _fileManagerAuth.GetCurrentUserId();
             
 			foreach(var item in resourceInfos)
