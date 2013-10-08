@@ -57,17 +57,20 @@ namespace FileManager.Web.Controllers
         public bool Post(Basket basket)
         {
             Guid userId = _fileManagerAuth.GetCurrentUserId();
+            try
+            {
+                Basket basketPrevious = _facade.GetBasketByResourceIdAndUserId(basket.ResourceId, userId);
+                if (basketPrevious == null)
+                {
+                    basket.UserId = userId;
+                    return _facade.AddBusket(basket); 
+                }
+            }
+            catch(Exception e)
+            {
 
-            Basket basketPrevious = _facade.GetBasketByResourceIdAndUserId(basket.ResourceId, userId);
-            if (basketPrevious == null)
-            {
-                basket.UserId = userId;
-                return _facade.AddBusket(basket); 
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         [ActionName("PostDownloadComplete")]
