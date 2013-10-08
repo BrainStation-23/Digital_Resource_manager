@@ -29,6 +29,8 @@ namespace FileManager.Web.Controllers
             List<BasketViewModel> basketViewModelList = new List<BasketViewModel>();
 
             List<Basket> baskets = _facade.GetBuskets().ToList();
+            if (baskets == null || baskets.Count==0)
+                return basketCollectionViewModel;
             
             foreach (Basket item in baskets)
             {

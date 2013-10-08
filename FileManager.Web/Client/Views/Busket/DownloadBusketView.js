@@ -31,7 +31,7 @@
                 self.showRemoveButton();
             });
 
-            if (result.BasketViewModelList.length == 0)
+            if (result.BasketViewModelList==null || result.BasketViewModelList.length == 0)
             {
                 $("#downloadAll").hide();
             }

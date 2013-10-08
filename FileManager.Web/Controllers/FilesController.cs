@@ -110,18 +110,25 @@ namespace FileManager.Web.Controllers
                 return null;
             }
             var searchResultsPagination = new SearchResultsPaginationViewModel();
-            var data = this.GetSearchResultsViewModel(_facade.GetSearchResults(searchText));
-            if (data != null)
+            try
             {
-                var totalData = data.Count();
+                var data = this.GetSearchResultsViewModel(_facade.GetSearchResults(searchText));
+                if (data != null)
+                {
+                    var totalData = data.Count();
 
-                double resultToDisplay = 18;
-                double pagecount = Math.Ceiling(totalData / resultToDisplay);
-                int totalPage = totalData > resultToDisplay ? Convert.ToInt32(pagecount) : 1;
-                int actualDisplay = totalData < resultToDisplay ? totalData : Convert.ToInt32(resultToDisplay);
+                    double resultToDisplay = 18;
+                    double pagecount = Math.Ceiling(totalData / resultToDisplay);
+                    int totalPage = totalData > resultToDisplay ? Convert.ToInt32(pagecount) : 1;
+                    int actualDisplay = totalData < resultToDisplay ? totalData : Convert.ToInt32(resultToDisplay);
 
-                searchResultsPagination.SearchResult = data.Skip(actualDisplay * pageNumber).Take(actualDisplay);
-                searchResultsPagination.TotalPage = totalPage;
+                    searchResultsPagination.SearchResult = data.Skip(actualDisplay * pageNumber).Take(actualDisplay);
+                    searchResultsPagination.TotalPage = totalPage;
+                }
+            }
+            catch (Exception e)
+            {
+
             }
             return searchResultsPagination;
         }
@@ -239,11 +246,16 @@ namespace FileManager.Web.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
+            try
+            {
+                if (_facade.DeleteResource(id))
+                    return Request.CreateResponse(HttpStatusCode.OK, id);
+            }
+            catch (Exception e)
+            {
 
-            if (_facade.DeleteResource(id))
-                return Request.CreateResponse(HttpStatusCode.OK, id);
-            else
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.NotFound);
 		}
 		public List<string> GetTagByChar(string chars)
 		{
@@ -274,13 +286,16 @@ namespace FileManager.Web.Controllers
         }
         public SearchResultsItemDetailsViewModel GetSearchResultsDetailsViewModel(long itemDetailsId)
         {
-            if (!IsAuthorize("read"))
-            {
-                return null;
-            }
-            
-            var item = _facade.GetResourceById(itemDetailsId);
-            
+                if (!IsAuthorize("read"))
+                {
+                    return null;
+                }
+                var _searchResultsItemDetailsVM = new SearchResultsItemDetailsViewModel();
+
+                var item = _facade.GetResourceById(itemDetailsId);
+                if (item == null)
+                    return _searchResultsItemDetailsVM;
+
                 var filePath = "/Resources/" + item.Id + "/" + item.ThumbName;
 
                 string extension = System.IO.Path.GetExtension(item.ResourceName);
@@ -300,7 +315,7 @@ namespace FileManager.Web.Controllers
 
                 //double rating = 0;
                 int rating = item.UserRating !=0 ? item.UserRating / item.RatingCount : 0;  // as user rating is total rating
-                var _searchResultsItemDetailsVM = new SearchResultsItemDetailsViewModel()
+                _searchResultsItemDetailsVM = new SearchResultsItemDetailsViewModel()
                 {
                     Id = item.Id,
                     Title = item.Title,
