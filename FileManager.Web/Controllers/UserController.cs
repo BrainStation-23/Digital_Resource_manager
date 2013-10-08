@@ -149,12 +149,37 @@ namespace FileManager.Web.Controllers
         // POST api/<controller>
         public bool Post(LoginInfo loginInfo)
         {
-            return _facade.Login(loginInfo.emailAddress, loginInfo.password);
+            try
+            {
+                return _facade.Login(loginInfo.emailAddress, loginInfo.password);
+            }
+            catch(ProviderIncompatibleException e) 
+            {
+                throw new Exception("Please check your ConnectionString named FileManagerDbContext");
+            }
+            catch (Exception e)
+            {
+                //throw e;
+            }
+            return false;
         }
         
         public bool Post(string email)
         {
-            return _facade.RecoverPassword(email);
+            try
+            {
+                return _facade.RecoverPassword(email);
+            }
+            catch (ProviderIncompatibleException e)
+            {
+                throw new Exception("Please check your ConnectionString named FileManagerDbContext");
+            }
+            catch (Exception e)
+            {
+                //throw e;
+            }
+            return false;
+           
         }
     }
 }
