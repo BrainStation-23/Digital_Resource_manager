@@ -192,7 +192,6 @@
     <Content Include="Client\Templates\CreateResource.html" />
     <Content Include="Client\Templates\Favourite\Favourite.html" />
     <Content Include="Client\Templates\filecontainer.html" />
-    <Content Include="Client\Home.html" />
     <Content Include="Client\Templates\GenericSearch\GenericSearch.html" />
     <Content Include="Client\Templates\GenericSearch\GenericSearchResults.html" />
     <Content Include="Client\Templates\History\DownloadHistory.html" />
@@ -222,7 +221,6 @@
     <Content Include="Client\Views\GenericSearch\GenericSearchView.js" />
     <Content Include="Client\Views\History\DownloadDetailView.js" />
     <Content Include="Client\Views\History\DownloadHistoryView.js" />
-    <Content Include="Client\Views\Home.js" />
     <Content Include="Client\Views\Home\AlertView.js" />
     <Content Include="Client\Views\Home\HomeView.js" />
     <Content Include="Client\Views\Navigation\HeaderNavigationView.js" />
