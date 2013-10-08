@@ -1,8 +1,4 @@
-﻿// Author: Thomas Davis <thomasalwyndavis@gmail.com>
-// Filename: main.js
-// Require.js allows us to configure shortcut alias
-// Their usage will become more apparent futher along in the tutorial.
-window.formProxy = {};
+﻿window.formProxy = {};
 require.config({
     /*enforceDefine: true,*/
     paths: {
@@ -21,6 +17,7 @@ require.config({
         homeCollection:'Collections/HomeCollection',
         templates: '../templates'
     },
+    waitSeconds: 200,
     shim: {
         'jquery.upload': {
             deps: ['jquery']
