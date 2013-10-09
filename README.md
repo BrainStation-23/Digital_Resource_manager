@@ -21,7 +21,7 @@ Digital Resource Manager
    * **Requirejs** used it for AMD API for all JavaScript modules.
    * **Dust** templeting engine for better rendering experience.
    * **Twitter bootstrap** to see a awesome UI.
- * Every major development on this Resource Management app has been tagged (1.01)
+ * Every major development on this Resource Management app has been tagged (1.02)
  * You can download each tag (starting with 1.0), check progress and move to the next when you understood everything that has been done.
  * Follow the change log (tag history) and enjoy!
  
