@@ -31,7 +31,7 @@ Based on convention, EF will look for a connection string named as the DBContext
 
      <!-- 
          By default (convention over configuration, the connection string with the same name as your DBContext will be used0 
-         You can select then wherever you will use SQL CE, SQL Serer Express Edition, etc, here. 
+         You can select then wherever you will use SQL CE, SQL Server Express Edition, etc, here. 
      -->
      <add name="FileManagerDbContext" connectionString="Data Source=|DataDirectory|ResourceManager.sdf" providerName="System.Data.SqlServerCe.4.0" />
      <!--
