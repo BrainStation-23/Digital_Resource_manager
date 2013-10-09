@@ -82,9 +82,9 @@ Based on convention, EF will look for a connection string named as the DBContext
 ## Change Log:
 
 ### 1.02
-	* Home Url mapping.
+	* Changed Home Url mapping.
 	* Handle few unhandle exception.
-	* Login page css issue.
+	* Fix Login page css issue.
 	* Fix requirejs loading timout issue.
 
 ### 1.01
