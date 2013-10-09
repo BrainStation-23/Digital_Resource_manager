@@ -78,3 +78,17 @@ Based on convention, EF will look for a connection string named as the DBContext
 ## Developed By:
 
 * [BrainStation-23](http://www.brainstation-23.com)
+
+## Change Log:
+
+### 1.02
+	* Home Url mapping.
+	* Handle few unhandle exception.
+	* Login page css issue.
+	* Fix requirejs loading timout issue.
+
+### 1.01
+	* Fix UI Issues.
+
+### 1.00
+	* Initial release of Digital Resource Manager.
