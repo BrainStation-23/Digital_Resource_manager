@@ -148,6 +148,10 @@ namespace FileManager.Web.Controllers
 			}
 
 			string root = HttpContext.Current.Server.MapPath("~/TempResources");
+			if (!Directory.Exists(root))
+			{
+				Directory.CreateDirectory(root);
+			}
 			var provider = new MultipartFormDataStreamProvider(root);
 
 			try

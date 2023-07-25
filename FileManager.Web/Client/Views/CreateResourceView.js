@@ -84,7 +84,7 @@ define([
                 isValidRank = true;
             }
             
-            
+            /*TODO fix file upload issue here.*/
             if (title != "" && uploadingFile && uploadingthumb && isValidRank) {
                 $('#formFileUploader').append('<div class="modal-backdrop fade in loading"></div><img class="loading" src="/img/loading.gif" style="position: absolute;top: 60%;left: 50%;">');
                 $.ajax({
