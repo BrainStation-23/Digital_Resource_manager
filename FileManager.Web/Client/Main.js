@@ -1,18 +1,19 @@
-﻿window.formProxy = {};
+﻿/// <reference path="../scripts/jquery.tablesorter.widgets.js" />
+window.formProxy = {};
 require.config({
     /*enforceDefine: true,*/
     paths: {
-        jquery: '../scripts/jquery-1.8.2',
+        jquery: '../scripts/jquery-3.7.0',
         'jquery.bootstrap': '../scripts/bootstrap.min',
         'jquery.upload': '../scripts/jquery.upload-1.0.2.min',
         'jquery.bootpag': '../scripts/jquery.bootpag',
-        'jquery.tablesorter': '../scripts/jquery.tablesorter-2.0.3',
-        'jquery.tablesorter.filer': '../scripts/jquery.tablesorter.filer',
+        'jquery.tablesorter': '../scripts/jquery.tablesorter.min',
         'jquery.tablesorter.pager': '../scripts/jquery.tablesorter.pager',
+        'jquery.tablesorter.widgets': '../scripts/jquery.tablesorter.widgets.min',
         'backbone-validation-amd-min': '../scripts/backbone-validation-amd-min',
-        underscore: '../scripts/underscore-1.3.0',       
+        underscore: '../scripts/underscore',       
         dust: '../scripts/dust-full-0.6.0',
-        backbone: '../Scripts/backbone-0.5.3',
+        backbone: '../Scripts/backbone',
         text: '../scripts/text',
         homeCollection:'Collections/HomeCollection',
         templates: '../templates'
@@ -28,11 +29,11 @@ require.config({
         'jquery.tablesorter': {
             deps: ['jquery']
         },
-        'jquery.tablesorter.filer': {
-            deps: ['jquery']
-        },
         'jquery.tablesorter.pager': {
-            deps: ['jquery']
+            deps: ['jquery', 'jquery.tablesorter']
+        },
+        'jquery.tablesorter.widgets': {
+            deps: ['jquery', 'jquery.tablesorter']
         },
         'jquery.bootstrap': {
             deps: ['jquery'],
@@ -40,10 +41,10 @@ require.config({
         },
         underscore: {
             exports: '_'
-        }/*,
+        },
         'backbone-validation-amd-min': {
             deps: ['backbone']
-        }*/,
+        },
         backbone: {
             deps: ["underscore", "jquery"],
             exports: "Backbone"
@@ -61,8 +62,8 @@ require([
   'jquery.upload',
   'jquery.bootpag',
   'jquery.tablesorter',
-  'jquery.tablesorter.filer',
   'jquery.tablesorter.pager',
+  'jquery.tablesorter.widgets',
   'backbone-validation-amd-min'
 
   // Some plugins have to be loaded in order due to their non AMD compliance
@@ -73,7 +74,3 @@ require([
     App.initialize();
     
 })
-
-
-
-

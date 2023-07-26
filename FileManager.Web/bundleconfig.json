@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "js/bootstrap.min.js",
+    "inputFiles": [
+      "js/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap.min.js",
+    "inputFiles": [
+      "Scripts/bootstrap.js"
+    ]
+  }
+]

@@ -33,16 +33,22 @@
             });
         },
         bindSortableGrid: function () {
-            $("#tableHistoryDetail").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOneHistoryDetail"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOneHistoryDetail"),
-                filterClearContainer: $("#filterClearOneHistoryDetail"),
-                filterCaseSensitive: false
+            var table = $("#tableHistoryDetail").tablesorter({
+                theme: 'blue',
+                debug: false,
+                sortList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
+            }).tablesorterPager({
+                container: $("#pagerOneHistoryDetail"),
+                positionFixed: false
             });
-            $("#tableHistoryDetail .header").click(function () {
-                $("#tableHistoryDetail tfoot .first").click();
-            });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         }
         
     });

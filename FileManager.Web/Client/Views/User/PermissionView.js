@@ -157,16 +157,25 @@
             }
         },
         bindSortableGrid: function () {
-            $("#tableRoles").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#rolepagerOne"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#rolefilterBoxOne"),
-                filterClearContainer: $("#rolefilterClearOne"),
-                filterCaseSensitive: false
+            var table = $("#tableRoles").tablesorter({
+                theme: 'blue',
+                debug: false,
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    // use the filter_external option OR use bindSearch function (below)
+                    // to bind external filters.
+                    // filter_external : '.search',
+
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
+            }).tablesorterPager({
+                container: $("#rolefilterBoxOne")
             });
-            $("#tableRoles .header").click(function () {
-                $("#tableRoles tfoot .first").click();
-            });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         selectAllPermission: function (context) {
             var permissions = [];

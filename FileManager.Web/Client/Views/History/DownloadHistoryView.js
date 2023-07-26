@@ -40,16 +40,21 @@
             this.render();
         },
         bindSortableGrid: function () {
-            $("#tableHistory").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOneHistory"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOneHistory"),
-                filterClearContainer: $("#filterClearOneHistory"),
-                filterCaseSensitive: false
+            var table = $("#tableHistory").tablesorter({
+                theme: 'blue',
+                debug: false,
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
+            }).tablesorterPager({
+                container: $("#pagerOneHistory")
             });
-            $("#tableHistory .header").click(function () {
-                $("#tableHistory tfoot .first").click();
-            });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         showDetailHistoryModal: function (e) {
             var self = this;

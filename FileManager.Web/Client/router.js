@@ -27,14 +27,14 @@ define([
       'search': 'showSearchURL',
       'Favourites': 'showFavouriteURL',
       'favourites': 'showFavouriteURL',
-      'Download Basket': 'showDownloadBasketURL',
-      'download basket': 'showDownloadBasketURL',
+      'Download-Basket': 'showDownloadBasketURL',
+      'download-basket': 'showDownloadBasketURL',
       'Category': 'showCategoryURL',
       'category': 'showCategoryURL',
-      'Create Role': 'showCreateRoleURL',
-      'create role': 'showCreateRoleURL',
-      'Download History': 'showHistoryURL',
-      'download history': 'showHistoryURL',
+      'Create-Role': 'showCreateRoleURL',
+      'create-role': 'showCreateRoleURL',
+      'Download-History': 'showHistoryURL',
+      'download-history': 'showHistoryURL',
       'List': 'showGenericSearch',
       'list': 'showGenericSearch',
       // Default
@@ -71,7 +71,7 @@ define([
                     self.headerNavigationRender();
                 }
                
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -80,20 +80,21 @@ define([
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
+                console.log("Test log");
                 createResourceView.getResourceData();
                 var currentTab = $('a[href="#Resource"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
-    
+
     showSearchURL: function () {
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
                 searchView.render();
                 var currentTab = $('a[href="#Search"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -104,7 +105,7 @@ define([
             if (isLoggedIn) {
                 genericSearchView.render();
                 var currentTab = $('a[href="#List"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -114,7 +115,7 @@ define([
             if (isLoggedIn) {
                 usersView.render();
                 var currentTab = $('a[href="#Users"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -124,8 +125,8 @@ define([
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
                 permissionView.render();
-                var currentTab = $('a[href="#Create Role"]');
-                self.addActivClass(currentTab);
+                var currentTab = $('a[href="#Create-Role"]');
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -136,7 +137,7 @@ define([
             if (isLoggedIn) {
                 favouriteView.render();
                 var currentTab = $('a[href="#Favourites"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -145,9 +146,10 @@ define([
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
+                console.log("Test log in downloadhistory");
                 downloadHistoryView.render();
-                var currentTab = $('a[href="#Download History"]');
-                self.addActivClass(currentTab)
+                var currentTab = $('a[href="#Download-History"]');
+                self.addActiveClass(currentTab)
             }
         }, 'json');
     },
@@ -158,14 +160,14 @@ define([
             if (isLoggedIn) {
                 $.get('/api/basket', null, function (res) {
                     downloadBusketView.render(res);
-                    var currentTab = $('a[href="#Download Basket"]');
-                    self.addActivClass(currentTab)
+                    var currentTab = $('a[href="#Download-Basket"]');
+                    self.addActiveClass(currentTab)
                 }, 'json');
             }
         }, 'json');
     },
 
-    addActivClass: function (e) {
+    addActiveClass: function (e) {
         e.parent().addClass('active').siblings().removeClass('active');
         $(".alert").alert('close');
     },

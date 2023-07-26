@@ -1984,9 +1984,9 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
-      if ($.browser.chrome || $.browser.webkit || $.browser.msie) {
-        this.$element.on('keydown', $.proxy(this.keydown, this))
-      }
+      //if ($.browser.chrome || $.browser.webkit || $.browser.msie) {
+      //  this.$element.on('keydown', $.proxy(this.keydown, this))
+      //}
 
       this.$menu
         .on('click', $.proxy(this.click, this))
@@ -2203,7 +2203,7 @@
     listen: function() {
       if (this.$element.attr("readonly")) return
 
-      var pasteEventName = ($.browser.msie ? 'paste' : 'input') + ".mask"
+      var pasteEventName = `input.mask`
 
       this.$element
         .on("unmask", $.proxy(this.unmask, this))
@@ -2316,10 +2316,6 @@
         else
           that.caret(pos)
       }
-
-      if ($.browser.msie)
-        moveCaret()
-      else
         setTimeout(moveCaret, 0)
     },
     

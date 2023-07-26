@@ -93,16 +93,22 @@
             }
         },
         bindSortableGrid: function () {
-            $("#tableCategory").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOne"),
-                filterClearContainer: $("#filterClearOne"),
-                filterCaseSensitive: false
+            var table = $('#tableCategory').tablesorter({
+                theme: 'blue',
+                debug: false,
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
+            }).tablesorterPager({
+                container: $("#pagerOne")
             });
-            $("#tableCategory .header").click(function () {
-                $("#tableCategory tfoot .first").click();
-            });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         showEditCategoryModal: function (e) {
             e.preventDefault();

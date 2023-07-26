@@ -1,59 +1,59 @@
-﻿<div class="span6">
-    <table class="table table-hover" id="tableRoles">
-        <thead>
-            <tr>
-                <td class="filter" colspan="8">
-                    <div class="pull-right">
-                        Search:
-                         <input id="rolefilterBoxOne" value="" maxlength="30" size="30" type="text" class="input-medium search-query" />
-                        <i class="icon-remove" id="rolefilterClearOne"></i> 
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th><a href='#' title="Click Header to Sort">RoleName</a>
-                </th>
-                <th><a href='#' title="Click Header to Sort">Permissions</a>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {#rolepermissions}
-       <tr>
-           <td>{RoleName}
-           </td>
-           <td>{Permission}
-           </td>
-           <td><a href="#"><i data-id="{RoleName}" class="icon-edit EditRole"></i></a>
-               <a id="#" href="#"><i data-id="{RoleName}" class="icon-trash deleteRole"></i></a>
-           </td>
+﻿<div class="span9">
+	<div class="pull-right">
+		<!--<input id="rolefilterBoxOne" value="" maxlength="30" size="30" type="text" class="input-medium search-query" />-->
+		<input class="search" type="search" data-column="all"> (Match any column)<br>
+	</div>
+	<table class="table table-hover" id="tableRoles">
+		<thead>
+		<tr>
+				<th>
+					RoleName
+				</th>
+				<th>
+					Permissions
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{#rolepermissions}
+			<tr>
+				<td>
+					{RoleName}
+				</td>
+				<td>
+					{Permission}
+				</td>
+				<td>
+					<a href="#"><i data-id="{RoleName}" class="icon-edit EditRole"></i></a>
+					<a id="#" href="#"><i data-id="{RoleName}" class="icon-trash deleteRole"></i></a>
+				</td>
 
-       </tr>
-            {/rolepermissions}
-        </tbody>
-        <tfoot>
-            <tr id="rolepagerOne">
-                <td colspan="8">
-                    <button class="btn  addRole"><i class="icon-plus-sign"></i>Add</button>                    
-                    <i class="first  icon-fast-backward"></i>
-                    <i class="prev icon-backward"></i>
-                    <input type="text" class="pagedisplay input-mini search-query" />
-                    <i class="next icon-forward"></i>
-                    <i class="last icon-fast-forward"></i>
-                    
-                    <select class="pagesize input-mini pull-right">
-                        <option selected="selected" value="10">10</option>
+			</tr>
+			{/rolepermissions}
+		</tbody>
+		<tfoot>
+			<tr id="rolepagerOne">
+				<td colspan="8">
+					<button class="btn  addRole"><i class="icon-plus-sign"></i>Add</button>
+					<i class="first  icon-fast-backward"></i>
+					<i class="prev icon-backward"></i>
+					<input type="text" class="pagedisplay input-mini search-query" />
+					<i class="next icon-forward"></i>
+					<i class="last icon-fast-forward"></i>
 
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="40">40</option>
-                    </select>
-                    
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+					<select class="pagesize input-mini pull-right">
+						<option selected="selected" value="10">10</option>
+
+						<option value="20">20</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+					</select>
+
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 </div>
 
 <div id="roleEdit">
