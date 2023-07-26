@@ -1,4 +1,5 @@
-﻿window.formProxy = {};
+﻿/// <reference path="../scripts/jquery.tablesorter.widgets.js" />
+window.formProxy = {};
 require.config({
     /*enforceDefine: true,*/
     paths: {
@@ -6,8 +7,9 @@ require.config({
         'jquery.bootstrap': '../scripts/bootstrap.min',
         'jquery.upload': '../scripts/jquery.upload-1.0.2.min',
         'jquery.bootpag': '../scripts/jquery.bootpag',
-        'jquery.tablesorter': '../scripts/jquery.tablesorter',
+        'jquery.tablesorter': '../scripts/jquery.tablesorter.min',
         'jquery.tablesorter.pager': '../scripts/jquery.tablesorter.pager',
+        'jquery.tablesorter.widgets': '../scripts/jquery.tablesorter.widgets.min',
         'backbone-validation-amd-min': '../scripts/backbone-validation-amd-min',
         underscore: '../scripts/underscore',       
         dust: '../scripts/dust-full-0.6.0',
@@ -28,7 +30,10 @@ require.config({
             deps: ['jquery']
         },
         'jquery.tablesorter.pager': {
-            deps: ['jquery']
+            deps: ['jquery', 'jquery.tablesorter']
+        },
+        'jquery.tablesorter.widgets': {
+            deps: ['jquery', 'jquery.tablesorter']
         },
         'jquery.bootstrap': {
             deps: ['jquery'],
@@ -58,6 +63,7 @@ require([
   'jquery.bootpag',
   'jquery.tablesorter',
   'jquery.tablesorter.pager',
+  'jquery.tablesorter.widgets',
   'backbone-validation-amd-min'
 
   // Some plugins have to be loaded in order due to their non AMD compliance

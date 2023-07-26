@@ -40,6 +40,14 @@
             this.render();
         },
         bindSortableGrid: function () {
+            $("#tableHistory").tablesorter({
+                debug: false,
+                sortList: [[[0, 0]]]
+            }).tablesorterPager({
+                container: $("#pagerOneHistory"),
+                positionFixed: false
+            });
+
             $("#tableHistory").tablesorter({ debug: false, sortList: [[0, 0]] })
             .tablesorterPager({ container: $("#pagerOneHistory"), positionFixed: false })
             .tablesorterFilter({

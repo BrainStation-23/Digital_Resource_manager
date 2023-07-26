@@ -93,12 +93,25 @@
             }
         },
         bindSortableGrid: function () {
-            $('#tableCategory').tablesorter({
+            var table = $('#tableCategory').tablesorter({
+                theme: 'blue',
                 debug: false,
-                sotList: [[[0, 0]]]
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    // use the filter_external option OR use bindSearch function (below)
+                    // to bind external filters.
+                    // filter_external : '.search',
+
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
             }).tablesorterPager({
                 container: $("#pagerOne")
             });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         showEditCategoryModal: function (e) {
             e.preventDefault();

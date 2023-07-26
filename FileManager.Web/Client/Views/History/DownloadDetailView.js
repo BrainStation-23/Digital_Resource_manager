@@ -40,17 +40,6 @@
                 container: $("#pagerOneHistoryDetail"),
                 positionFixed: false
             });
-
-            $("#tableHistoryDetail").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOneHistoryDetail"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOneHistoryDetail"),
-                filterClearContainer: $("#filterClearOneHistoryDetail"),
-                filterCaseSensitive: false
-            });
-            $("#tableHistoryDetail .header").click(function () {
-                $("#tableHistoryDetail tfoot .first").click();
-            });
         }
         
     });
