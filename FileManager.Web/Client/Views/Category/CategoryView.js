@@ -99,9 +99,6 @@
                 sotList: [[0, 0]],
                 widgets: ["filter"],
                 widgetOptions: {
-                    // use the filter_external option OR use bindSearch function (below)
-                    // to bind external filters.
-                    // filter_external : '.search',
 
                     filter_columnFilters: false,
                     filter_saveFilters: false,

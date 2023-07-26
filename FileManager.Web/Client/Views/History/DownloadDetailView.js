@@ -33,13 +33,22 @@
             });
         },
         bindSortableGrid: function () {
-            $("#tableHistoryDetail").tablesorter({
+            var table = $("#tableHistoryDetail").tablesorter({
+                theme: 'blue',
                 debug: false,
-                sortList: [[[0, 0]]]
+                sortList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
             }).tablesorterPager({
                 container: $("#pagerOneHistoryDetail"),
                 positionFixed: false
             });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         }
         
     });

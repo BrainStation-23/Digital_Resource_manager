@@ -53,16 +53,25 @@
 
         },
         bindSortableGrid: function () {
-            $("#tableUsers").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#userpagerOne"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#userfilterBoxOne"),
-                filterClearContainer: $("#userfilterClearOne"),
-                filterCaseSensitive: false
+            var table = $('#tableUsers').tablesorter({
+                theme: 'blue',
+                debug: false,
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    // use the filter_external option OR use bindSearch function (below)
+                    // to bind external filters.
+                    // filter_external : '.search',
+
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
+            }).tablesorterPager({
+                container: $("#userpagerOne")
             });
-            $("#tableUsers .header").click(function () {
-                $("#tableUsers tfoot .first").click();
-            });
+
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         showEditUserModal: function (e) {
             e.preventDefault();

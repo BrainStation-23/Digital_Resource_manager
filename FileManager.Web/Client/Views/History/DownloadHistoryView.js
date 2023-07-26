@@ -41,23 +41,20 @@
         },
         bindSortableGrid: function () {
             $("#tableHistory").tablesorter({
+                theme: 'blue',
                 debug: false,
-                sortList: [[[0, 0]]]
+                sotList: [[0, 0]],
+                widgets: ["filter"],
+                widgetOptions: {
+                    filter_columnFilters: false,
+                    filter_saveFilters: false,
+                    filter_reset: '.reset'
+                }
             }).tablesorterPager({
-                container: $("#pagerOneHistory"),
-                positionFixed: false
+                container: $("#pagerOneHistory")
             });
 
-            $("#tableHistory").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOneHistory"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOneHistory"),
-                filterClearContainer: $("#filterClearOneHistory"),
-                filterCaseSensitive: false
-            });
-            $("#tableHistory .header").click(function () {
-                $("#tableHistory tfoot .first").click();
-            });
+            $.tablesorter.filter.bindSearch(table, $('.search'), false);
         },
         showDetailHistoryModal: function (e) {
             var self = this;

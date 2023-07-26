@@ -71,7 +71,7 @@ define([
                     self.headerNavigationRender();
                 }
                
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -82,7 +82,7 @@ define([
             if (isLoggedIn) {
                 createResourceView.getResourceData();
                 var currentTab = $('a[href="#Resource"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -93,7 +93,7 @@ define([
             if (isLoggedIn) {
                 searchView.render();
                 var currentTab = $('a[href="#Search"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -104,7 +104,7 @@ define([
             if (isLoggedIn) {
                 genericSearchView.render();
                 var currentTab = $('a[href="#List"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -114,7 +114,7 @@ define([
             if (isLoggedIn) {
                 usersView.render();
                 var currentTab = $('a[href="#Users"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -125,7 +125,7 @@ define([
             if (isLoggedIn) {
                 permissionView.render();
                 var currentTab = $('a[href="#Create Role"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -136,7 +136,7 @@ define([
             if (isLoggedIn) {
                 favouriteView.render();
                 var currentTab = $('a[href="#Favourites"]');
-                self.addActivClass(currentTab);
+                self.addActiveClass(currentTab);
             }
         }, 'json');
     },
@@ -146,8 +146,8 @@ define([
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
                 downloadHistoryView.render();
-                var currentTab = $('a[href="#Download History"]');
-                self.addActivClass(currentTab)
+                var currentTab = $('a[href="#DownloadHistory"]');
+                self.addActiveClass(currentTab)
             }
         }, 'json');
     },
@@ -159,13 +159,13 @@ define([
                 $.get('/api/basket', null, function (res) {
                     downloadBusketView.render(res);
                     var currentTab = $('a[href="#Download Basket"]');
-                    self.addActivClass(currentTab)
+                    self.addActiveClass(currentTab)
                 }, 'json');
             }
         }, 'json');
     },
 
-    addActivClass: function (e) {
+    addActiveClass: function (e) {
         e.parent().addClass('active').siblings().removeClass('active');
         $(".alert").alert('close');
     },
