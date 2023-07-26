@@ -33,6 +33,14 @@
             });
         },
         bindSortableGrid: function () {
+            $("#tableHistoryDetail").tablesorter({
+                debug: false,
+                sortList: [[[0, 0]]]
+            }).tablesorterPager({
+                container: $("#pagerOneHistoryDetail"),
+                positionFixed: false
+            });
+
             $("#tableHistoryDetail").tablesorter({ debug: false, sortList: [[0, 0]] })
             .tablesorterPager({ container: $("#pagerOneHistoryDetail"), positionFixed: false })
             .tablesorterFilter({

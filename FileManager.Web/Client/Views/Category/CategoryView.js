@@ -93,15 +93,11 @@
             }
         },
         bindSortableGrid: function () {
-            $("#tableCategory").tablesorter({ debug: false, sortList: [[0, 0]] })
-            .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
-            .tablesorterFilter({
-                filterContainer: $("#filterBoxOne"),
-                filterClearContainer: $("#filterClearOne"),
-                filterCaseSensitive: false
-            });
-            $("#tableCategory .header").click(function () {
-                $("#tableCategory tfoot .first").click();
+            $('#tableCategory').tablesorter({
+                debug: false,
+                sotList: [[[0, 0]]]
+            }).tablesorterPager({
+                container: $("#pagerOne")
             });
         },
         showEditCategoryModal: function (e) {
