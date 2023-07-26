@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FileManager.Model;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace FileManager.BusinessFacade
 {
@@ -38,7 +39,7 @@ namespace FileManager.BusinessFacade
         }
         public bool UpdateCategory(Category category)
         {
-            _db.Entry(category).State = EntityState.Modified;
+            _db.Entry(category).State = (EntityState)System.Data.EntityState.Modified;
 
             try
             {

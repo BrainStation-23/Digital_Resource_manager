@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace FileManager.BusinessFacade
 {
@@ -64,7 +65,7 @@ namespace FileManager.BusinessFacade
         {
             try
             {
-                _db.Entry(role).State = EntityState.Modified;
+                _db.Entry(role).State = (EntityState)System.Data.EntityState.Modified;
                 _db.SaveChanges();
                 return true;
             }

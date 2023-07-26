@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FileManager.DAL.DataContext;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace FileManager.BusinessFacade
 {
@@ -37,7 +37,7 @@ namespace FileManager.BusinessFacade
         }
         public bool UpdateUser(User user)
         {
-            _db.Entry(user).State = System.Data.EntityState.Modified;
+            _db.Entry(user).State = (EntityState)System.Data.EntityState.Modified;
             try
             {
                 _db.SaveChanges();

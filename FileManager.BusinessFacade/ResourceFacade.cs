@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,7 @@ namespace FileManager.BusinessFacade
         }
         public bool UpdateResource(ResourceInfo resourceInfo)
         {
-            _db.Entry(resourceInfo).State = System.Data.EntityState.Modified;
+            _db.Entry(resourceInfo).State = (EntityState)System.Data.EntityState.Modified;
             try
             {
                 _db.SaveChanges();
