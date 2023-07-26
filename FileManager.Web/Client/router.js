@@ -125,7 +125,7 @@ define([
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
                 permissionView.render();
-                var currentTab = $('a[href="#Create Role"]');
+                var currentTab = $('a[href="#Create-Role"]');
                 self.addActiveClass(currentTab);
             }
         }, 'json');
