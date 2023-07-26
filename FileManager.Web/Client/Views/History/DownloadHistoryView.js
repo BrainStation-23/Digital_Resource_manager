@@ -40,7 +40,7 @@
             this.render();
         },
         bindSortableGrid: function () {
-            $("#tableHistory").tablesorter({
+            var table = $("#tableHistory").tablesorter({
                 theme: 'blue',
                 debug: false,
                 sotList: [[0, 0]],

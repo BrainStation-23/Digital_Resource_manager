@@ -27,14 +27,14 @@ define([
       'search': 'showSearchURL',
       'Favourites': 'showFavouriteURL',
       'favourites': 'showFavouriteURL',
-      'Download Basket': 'showDownloadBasketURL',
-      'download basket': 'showDownloadBasketURL',
+      'Download-Basket': 'showDownloadBasketURL',
+      'download-basket': 'showDownloadBasketURL',
       'Category': 'showCategoryURL',
       'category': 'showCategoryURL',
-      'Create Role': 'showCreateRoleURL',
-      'create role': 'showCreateRoleURL',
-      'Download History': 'showHistoryURL',
-      'download history': 'showHistoryURL',
+      'Create-Role': 'showCreateRoleURL',
+      'create-role': 'showCreateRoleURL',
+      'Download-History': 'showHistoryURL',
+      'download-history': 'showHistoryURL',
       'List': 'showGenericSearch',
       'list': 'showGenericSearch',
       // Default
@@ -80,13 +80,14 @@ define([
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
+                console.log("Test log");
                 createResourceView.getResourceData();
                 var currentTab = $('a[href="#Resource"]');
                 self.addActiveClass(currentTab);
             }
         }, 'json');
     },
-    
+
     showSearchURL: function () {
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
@@ -145,8 +146,9 @@ define([
         var self = this;
         $.get('/api/user/?id=1', null, function (isLoggedIn) {
             if (isLoggedIn) {
+                console.log("Test log in downloadhistory");
                 downloadHistoryView.render();
-                var currentTab = $('a[href="#DownloadHistory"]');
+                var currentTab = $('a[href="#Download-History"]');
                 self.addActiveClass(currentTab)
             }
         }, 'json');
@@ -158,7 +160,7 @@ define([
             if (isLoggedIn) {
                 $.get('/api/basket', null, function (res) {
                     downloadBusketView.render(res);
-                    var currentTab = $('a[href="#Download Basket"]');
+                    var currentTab = $('a[href="#Download-Basket"]');
                     self.addActiveClass(currentTab)
                 }, 'json');
             }

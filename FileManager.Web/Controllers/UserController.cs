@@ -115,7 +115,7 @@ namespace FileManager.Web.Controllers
             }
             else if (permission.PermissionName == "CreateRole")
             {
-                userMenuList.Add(new UserMenu() { MenuOrder = 7, MenuId = "navCreateRole", MenuName = "Create Role" });
+                userMenuList.Add(new UserMenu() { MenuOrder = 7, MenuId = "navCreateRole", MenuName = "Create-Role" });
             }
             else if (permission.PermissionName == "Users")
             {
@@ -127,7 +127,7 @@ namespace FileManager.Web.Controllers
             }
             else if (permission.PermissionName == "DownloadHistory")
             {
-                userMenuList.Add(new UserMenu() { MenuOrder = 8, MenuId = "navHistory", MenuName = "Download History" });
+                userMenuList.Add(new UserMenu() { MenuOrder = 8, MenuId = "navHistory", MenuName = "Download-History" });
             }
         }
 
@@ -138,11 +138,11 @@ namespace FileManager.Web.Controllers
             userMenuList.Add(new UserMenu() { MenuId = "navSearch", MenuName = "Search" });
             userMenuList.Add(new UserMenu() { MenuId = "navList", MenuName = "List" });
             userMenuList.Add(new UserMenu() { MenuId = "navFavourites", MenuName = "Favourites" });
-            userMenuList.Add(new UserMenu() { MenuId = "navDownloadBasket", MenuName = "Download Basket" });
+            userMenuList.Add(new UserMenu() { MenuId = "navDownloadBasket", MenuName = "Download-Basket" });
             userMenuList.Add(new UserMenu() { MenuId = "navCategory", MenuName = "Category" });
             userMenuList.Add(new UserMenu() { MenuId = "navUsers", MenuName = "Users" });
-            userMenuList.Add(new UserMenu() { MenuId = "navCreateRole", MenuName = "Create Role" });
-            userMenuList.Add(new UserMenu() { MenuId = "navHistory", MenuName = "Download History" });
+            userMenuList.Add(new UserMenu() { MenuId = "navCreateRole", MenuName = "Create-Role" });
+            userMenuList.Add(new UserMenu() { MenuId = "navHistory", MenuName = "Download-History" });
         }
 
 
