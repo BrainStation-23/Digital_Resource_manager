@@ -1,8 +1,13 @@
-
 var builder = WebApplication.CreateBuilder(args);
+
+//var connectionString = builder.Configuration.GetConnectionString("ExpenseTrackerConnection");
+
 builder.Services.AddSystemWebAdapters();
 builder.Services.AddHttpForwarder();
-
+//builder.Services.AddDbContext<FileManagerDbContext>(options =>
+//{
+//	options.UseSqlServer(connectionString);
+//})
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -10,7 +15,7 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseHsts();
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
