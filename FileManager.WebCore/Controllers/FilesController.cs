@@ -147,13 +147,17 @@ namespace FileManager.Web.Controllers
 		//changed from HttpResponseMessage return to ActionResult<Category>
 		[ActionName("CreateFile")]
 		[HttpPost]
-		public async Task<ActionResult> PostFile()
+		public async Task<ActionResult> PostFile(IFormFile file)
 		{
 			if (!IsAuthorize("write"))
 			{
 				return Unauthorized();
 				//return Request.CreateResponse(HttpStatusCode.Unauthorized);
 			}
+
+			if (file == null || file.Length == 0)
+				return BadRequest("No file uploaded");
+
 			// Check if the request contains multipart/form-data.
 			if (!HttpContext.Request.HasFormContentType && !HttpContext.Request.Form.Files.Any())
 				return new UnsupportedMediaTypeResult();
@@ -170,18 +174,16 @@ namespace FileManager.Web.Controllers
 			{
 				Directory.CreateDirectory(root);
 			}
-			foreach (var formFile in HttpContext.Request.Form.Files)
-			{
-				var filePath = System.IO.File.Create($"{root}_{formFile.FileName}");
-				await formFile.OpenReadStream().CopyToAsync(filePath);
-				await filePath.DisposeAsync();
-			}
 
+			using (var stream = new FileStream(root, FileMode.Create))
+			{
+				await file.CopyToAsync(stream);
+			}
+			
 			var provider = new MultipartFormDataStreamProvider(root);
 
 			try
 			{
-
 				// Read the form data and return an async task. singlefile.Headers.ContentDisposition.Name
 				await Request.Content.ReadAsMultipartAsync(provider);
 
@@ -194,10 +196,10 @@ namespace FileManager.Web.Controllers
 
 				foreach (var singlefile in provider.FileData)
 				{
-					var localName = JsonConvert.DeserializeObject(singlefile.Headers.ContentDisposition.Name);
-					//var localName = Json.Decode(singlefile.Headers.ContentDisposition.Name);
-					var localresourceName= JsonConvert.DeserializeObject(singlefile.Headers.ContentDisposition.FileName);
-					//var localresourceName = Json.Decode(singlefile.Headers.ContentDisposition.FileName);
+					//var localName = JsonConvert.DeserializeObject(singlefile.Headers.ContentDisposition.Name);
+					var localName = Json.Decode(singlefile.Headers.ContentDisposition.Name);
+					//var localresourceName= JsonConvert.DeserializeObject(singlefile.Headers.ContentDisposition.FileName);
+					var localresourceName = Json.Decode(singlefile.Headers.ContentDisposition.FileName);
 					if (string.Equals(localName, clientResourceName, StringComparison.OrdinalIgnoreCase))
 					{
 						resourceNameFromJson = localresourceName;
