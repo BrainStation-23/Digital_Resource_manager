@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Web.Tests", "Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.DAL", "FileManager.DAL\FileManager.DAL.csproj", "{4139716D-F636-4C70-9A6A-9D76C2E5623F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.BusinessFacade", "FileManager.BusinessFacade\FileManager.BusinessFacade.csproj", "{A6BDCFAA-1CFF-4CBA-826F-D65B164905F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager.BusinessFacade", "FileManager.BusinessFacade\FileManager.BusinessFacade.csproj", "{A6BDCFAA-1CFF-4CBA-826F-D65B164905F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Model", "FileManager.Model\FileManager.Model.csproj", "{5381ED97-B517-4DE9-A11C-D245A5C58F3E}"
 EndProject

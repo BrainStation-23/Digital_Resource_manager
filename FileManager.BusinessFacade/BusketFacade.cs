@@ -13,6 +13,7 @@ namespace FileManager.BusinessFacade
     {
         private FileManagerDbContext _db = new FileManagerDbContext();
         private FileManagerAuthorizationFacade _fmAuthorization = new FileManagerAuthorizationFacade();
+
         public IList<Basket> GetBuskets()
         {
             return _db.Baskets.ToList();
@@ -105,7 +106,7 @@ namespace FileManager.BusinessFacade
 
         private void CopyAndZipBasketFiles(List<Basket> basketList, Guid userId)
         {
-            var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Downloadbasket/"), userId.ToString());
+	        var path = Path.Combine("./Downloadbasket/", userId.ToString());
             DirectoryInfo d = new DirectoryInfo(path);
             if (!d.Exists)
             {
@@ -124,7 +125,7 @@ namespace FileManager.BusinessFacade
                 resourceInfo = this.GetResourceById(basket.ResourceId);
                 if (resourceInfo != null)
                 {
-                    string originalFilePath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Resources/"), resourceInfo.Id.ToString());
+                    string originalFilePath = Path.Combine("./Resources/", resourceInfo.Id.ToString());
 
                     string[] fileparts = resourceInfo.ResourceName.ToString().Split('.');
                     string filename = "";
@@ -146,7 +147,7 @@ namespace FileManager.BusinessFacade
                 }
             }
 
-            string zipFolder = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Downloadbasket/"), userId.ToString() + ".zip");
+            string zipFolder = Path.Combine("./Downloadbasket/", userId.ToString() + ".zip");
             CreateZipForBasketFiles(path, zipFolder, userId);
         }
         private void CreateZipForBasketFiles(string path, string zipFolder, Guid userID)

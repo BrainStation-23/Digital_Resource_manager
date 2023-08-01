@@ -39,7 +39,7 @@ namespace FileManager.BusinessFacade
         }
         public bool UpdateCategory(Category category)
         {
-            _db.Entry(category).State = (EntityState)System.Data.EntityState.Modified;
+            _db.Entry(category).State = EntityState.Modified;
 
             try
             {
@@ -80,7 +80,7 @@ namespace FileManager.BusinessFacade
             {                
                 foreach (var resource in resources)
                 {
-                    var path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Resources/"), resource.Id.ToString());
+                    var path = Path.Combine("./Resources/", resource.Id.ToString());
 
                     DirectoryInfo d = new DirectoryInfo(path);
 

@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using FileManager.DAL.DataContext;
-using FileManager.DAL;
+﻿using FileManager.BusinessFacade;
 using FileManager.Model;
-using System.Threading.Tasks;
-using System.IO;
-using System.Text;
 using FileManager.Web.ViewModel;
-using System.IO.Compression;
-using System.Data;
-using FileManager.BusinessFacade;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace FileManager.Web.Controllers
 {
@@ -179,7 +166,7 @@ namespace FileManager.Web.Controllers
 			{
 				await file.CopyToAsync(stream);
 			}
-			
+
 			var provider = new MultipartFormDataStreamProvider(root);
 
 			try
@@ -293,7 +280,7 @@ namespace FileManager.Web.Controllers
 			{
 				if (_facade.DeleteResource(id))
 					return new OkObjectResult(id);
-					//return Request.CreateResponse(HttpStatusCode.OK, id);
+				//return Request.CreateResponse(HttpStatusCode.OK, id);
 			}
 			catch (Exception e)
 			{
@@ -399,11 +386,14 @@ namespace FileManager.Web.Controllers
 				//return Request.CreateResponse(HttpStatusCode.Unauthorized);
 			}
 			// Check if the request contains multipart/form-data.
-			if (!Request.Content.IsMimeMultipartContent())
-			{
+
+			if (!HttpContext.Request.HasFormContentType && !HttpContext.Request.Form.Files.Any())
 				return new UnsupportedMediaTypeResult();
-				//throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-			}
+			//if (!Request.Content.IsMimeMultipartContent())
+			//{
+			//	return new UnsupportedMediaTypeResult();
+			//	//throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+			//}
 
 			//string root = HttpContext.Current.Server.MapPath("~/TempResources");
 			string root = Path.Combine(_hostEnvironment.WebRootPath, $"TempResources");

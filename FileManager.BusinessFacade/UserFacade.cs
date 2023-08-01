@@ -7,9 +7,6 @@ using System.Net.Configuration;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Configuration;
-using System.Web.Security;
 
 namespace FileManager.BusinessFacade
 {
@@ -34,6 +31,7 @@ namespace FileManager.BusinessFacade
             if (WebSecurity.GetUser(email) != null && WebSecurity.GetUser(email).IsApproved)
             {
                 User user = this.GetUserByUserName(email);//db.Users.Where(x => x.Username == email).FirstOrDefault();
+                // TODO ASP.NET membership should be replaced with ASP.NET Core identity. For more details see https://docs.microsoft.com/aspnet/core/migration/proper-to-2x/membership-to-core-identity.
                 string newPassword = Membership.GeneratePassword(6, 2);
                 string newHashPassword = WebSecurity.GetHash(newPassword);
 

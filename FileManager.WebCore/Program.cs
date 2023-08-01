@@ -1,9 +1,14 @@
+using FileManager.BusinessFacade;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //var connectionString = builder.Configuration.GetConnectionString("ExpenseTrackerConnection");
 
 builder.Services.AddSystemWebAdapters();
 builder.Services.AddHttpForwarder();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<FileManagerAuthorizationFacade>();
 //builder.Services.AddDbContext<FileManagerDbContext>(options =>
 //{
 //	options.UseSqlServer(connectionString);
@@ -24,7 +29,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.UseSystemWebAdapters();
-
+app.UseSession();
 app.MapDefaultControllerRoute();
 app.MapForwarder("/{**catch-all}", app.Configuration["ProxyTo"]).Add(static builder => ((RouteEndpointBuilder)builder).Order = int.MaxValue);
 
