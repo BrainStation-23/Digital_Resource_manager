@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net;
-using System.Net.Configuration;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +18,8 @@ namespace FileManager.BusinessFacade
 
             if (WebSecurity.Login(userName, password))
             {
-                HttpContext.Current.Session["emailAddress"] = userName;
+                
+	            HttpContext.Current.Session["emailAddress"] = userName;
                 isUser = true;
             }
 

@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSystemWebAdapters();
 builder.Services.AddHttpForwarder();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<FileManagerAuthorizationFacade>();
@@ -25,7 +26,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthorization();
 app.UseSystemWebAdapters();

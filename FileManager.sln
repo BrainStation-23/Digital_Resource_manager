@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.DAL", "FileMana
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager.BusinessFacade", "FileManager.BusinessFacade\FileManager.BusinessFacade.csproj", "{A6BDCFAA-1CFF-4CBA-826F-D65B164905F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager.Model", "FileManager.Model\FileManager.Model.csproj", "{5381ED97-B517-4DE9-A11C-D245A5C58F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager.Model", "FileManager.Model\FileManager.Model.csproj", "{5381ED97-B517-4DE9-A11C-D245A5C58F3E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileManager.WebCore", "FileManager.WebCore\FileManager.WebCore.csproj", "{218444E6-3A7B-419C-8465-C99495A523FB}"
 EndProject
